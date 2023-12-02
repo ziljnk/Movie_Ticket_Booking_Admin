@@ -1,0 +1,36 @@
+.big-title{
+  padding:8px 12px;
+  font-weight: 600;
+}
+
+.menu-item{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap:8px; 
+  padding:8px 12px;
+  cursor: pointer;
+  width:100%;
+  border-radius:16px;
+}
+
+.menu-item-active{
+  color:#fff;
+  background-color:#712f06;
+}
+
+.menu-item:hover .menu-item-icon{
+  color:#fff;
+}
+
+.menu-item:hover .menu-item-title{
+  color:#fff;
+}
+
+.menu-item:hover{
+  background-color:#712f06;
+}
+
+.logout .menu-item:hover{
+  background-color: #c63434 !important;
+}
