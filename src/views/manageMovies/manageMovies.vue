@@ -12,7 +12,7 @@
             <div class="d-flex flex-row" style="height: calc( 100vh - 66px)">
                 <NavigationBar class="col-2" />
                 <div class="col-10 d-flex flex-column"
-                    style="padding:24px; overflow-y: scroll; overflow-x: hidden; z-index:1;" v-motion-slide-left>
+                    style="padding:24px; overflow-y: hidden; overflow-x: hidden; z-index:1;" v-motion-slide-left>
                     <ul class="nav nav-pills mb-1" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="pills-movie-tab" data-bs-toggle="pill"
@@ -42,7 +42,7 @@
                                     <button class="btn-add" data-bs-toggle="modal" data-bs-target="#addMovie"><i
                                             class="bi bi-plus-lg"></i> Add new movie</button>
                                 </div>
-                                <div class="d-flex flex-column" style="gap:12px; margin-top: 2vh;">
+                                <div class="d-flex flex-column" style="gap:12px; margin-top: 2vh; overflow-y: scroll;">
                                     <div class="d-flex flex-row">
                                         <div class="col text-title-1">
                                             Image

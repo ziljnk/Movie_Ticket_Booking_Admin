@@ -116,6 +116,7 @@ export default class ManageMovies extends Vue {
             profit: 0
         },
         
+        
     ];
     public genre:any=[
         {
