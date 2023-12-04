@@ -5,7 +5,7 @@ a {
 }
   
 label {
-    font-family: 'Space Grotesk';
+    font-family: Poppins;
     font-size: 14px;
 }
   
@@ -57,12 +57,12 @@ border-radius: 10px;
 }
 
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 #app {
@@ -79,27 +79,53 @@ p {
     font-size: 14px;
 }
 
-input{
+.input{
     font-style: normal;
     font: 400px;
     border-radius:8px;
     border: none;
     padding:8px 16px;
+    outline: 1px solid #EBEBEB;
+    font-size: 14px !important;
 }
 
-input:focus{
-    outline: 2px solid #0A91AB;
+.input:focus{
+    outline: 1px solid #0A91AB;
+}
+
+.button-solid-small{
+    padding:8px 16px !important;
+    background-color: #712f06;
+    font-style: normal;
+    padding:8px 12px;
+    color:#fff;
+    border-radius: 16px;
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.button-solid-small:hover{
+    padding:8px 16px !important;
+    background-color: #fff;
+    font-style: normal;
+    color:#275b79;
+    outline: 8px solid rgba(100, 168, 213, 0.16);
+    font-weight: 600;
 }
 
 .button-solid{
     padding:8px 16px !important;
-    background-color: #275b79;
+    background-color: #712f06;
     font-style: normal;
     padding:8px 12px;
     color:#fff;
-    border-radius: 32px;
+    border-radius: 16px;
     border: none;
     font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 .button-solid:hover{
@@ -108,11 +134,118 @@ input:focus{
     font-style: normal;
     color:#275b79;
     outline: 8px solid rgba(100, 168, 213, 0.16);
-    border-radius: 32px;
     font-weight: 600;
+}
+
+.button-danger{
+    padding:8px 16px !important;
+    background-color: #bb2d3a;
+    font-style: normal;
+    padding:8px 12px;
+    color:#fff;
+    border-radius: 16px;
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.button-danger:hover{
+    padding:8px 16px !important;
+    background-color: #fff;
+    font-style: normal;
+    color:#bb2d3a;
+    outline: 8px solid rgba(187, 45, 58, .16);
+    font-weight: 600;
+}
+
+.button-outline {
+    padding: 8px 16px !important;
+    background-color: #fff;
+    font-style: normal;
+    color: #5c6369;
+    outline: 1px solid #5c6369;
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+.button-outline:hover {
+    padding: 8px 16px !important;
+    background-color: #5c6369;
+    color: #fff;
 }
 
 .background-feature{
     min-height: 100vh;
-    background-color: #f2f6fc;
+    background-color: #fcf7f2;
+}
+
+.input-field{
+    display: grid;
+    gap:16px;
+    justify-content: start;
+    align-items: start;
+
+    grid-template-columns: 70px 1fr;
+}
+
+.text-error {
+    font-size: 14px;
+    color: #ff513c;
+}
+
+.button-disabled{
+    opacity: 0.5;
+    cursor: none;
+    pointer-events: none;
+}
+
+i{
+    line-height: 0;
+}
+
+.tooltip {
+    padding: 0;
+  }
+  
+  .tooltip-inner {
+    font-family: Poppins;
+    color: #fff;
+    background-color: #712f06 !important;
+    filter: drop-shadow(4px 8px 32px rgba(0, 0, 0, 0.08)) !important;
+    border-radius: 8px !important;
+    padding: 10px !important;
+  }
+  
+  .bs-tooltip-start .tooltip-arrow::before, .bs-tooltip-auto[data-popper-placement^=left] .tooltip-arrow::before {
+    border-left-color: #712f06 !important;
+  }
+  
+  .bs-tooltip-start .tooltip-arrow::before, .bs-tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow::before {
+    border-bottom-color: #712f06 !important;
+  }
+  
+  .bs-tooltip-start .tooltip-arrow::before, .bs-tooltip-auto[data-popper-placement^=top] .tooltip-arrow::before {
+    border-top-color: #712f06 !important;
+  }
+  
+  .bs-tooltip-start .tooltip-arrow::before, .bs-tooltip-auto[data-popper-placement^=right] .tooltip-arrow::before {
+    border-right-color: #712f06 !important;
+  }
+
+.nav-link{
+    color: #712f06 !important;
+}
+
+.nav-link:hover{
+    background-color: #7b5741;
+    color: #fff !important;
+}
+
+.nav-pills .nav-link.active{
+    background-color: #712f06 !important;
+    color: #FFF !important;
 }

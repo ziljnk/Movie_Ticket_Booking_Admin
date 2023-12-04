@@ -1,0 +1,10 @@
+.modal-content {
+    border-radius: 16px;
+    min-height: 650px;
+}
+
+#movie-image-modal{
+    height: 80%;
+    object-fit: contain;
+    border: 10px solid #b56161;
+}
