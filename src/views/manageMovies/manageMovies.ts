@@ -1,12 +1,16 @@
 import { Vue,Options } from 'vue-class-component'
 import NavigationBar from '@/components/navigationBar/navigationBar.vue'
 import Header from '@/components/header/header.vue'
-import ModalAddMovie from './components/modal-add-customer/modal-add-movies.vue';
+import ModalAddMovie from './components/modal-add-movies/modal-add-movies.vue';
+import ModalAddGenre from './components/modal-add-genre/modal-add-genre.vue';
+import ModalDetailsMovie from './components/modal-details-movie/modal-details-movie.vue';
 @Options({
     components: {
         NavigationBar,
         Header,
-        ModalAddMovie
+        ModalAddMovie,
+        ModalAddGenre,
+        ModalDetailsMovie
     }
 })
 export default class ManageMovies extends Vue {

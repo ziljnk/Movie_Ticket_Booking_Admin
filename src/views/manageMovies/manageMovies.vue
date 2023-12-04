@@ -4,6 +4,8 @@
 
 <template>
     <ModalAddMovie id="addMovie" />
+    <ModalAddGenre id="addGenre" />
+    <ModalDetailsMovie id="detailsMovie" />
     <div class="movie-container">
         <div class="background-feature d-flex flex-column">
             <Header />
@@ -26,7 +28,7 @@
                     <div class="tab-content" id="pills-tabContent"
                         style="background:#fff; border-radius: 16px; height: 580px; position: relative;">
                         <div class="tab-pane fade show active" id="pills-movie" role="tabpanel"
-                            aria-labelledby="pills-movie-tab" style="padding: 16px; gap:12px; min-height: 100%;">
+                            aria-labelledby="pills-movie-tab" style="padding: 16px; gap:12px; height: 100%;">
                             <div class="d-flex flex-column"
                                 style="gap:12px; background: #ffffff; width:100%; padding:16px; height:100%; position: relative; border-radius:16px">
                                 <div class="d-flex flex-row justify-content-between align-items-center"
@@ -61,8 +63,7 @@
                                             Publish Date
                                         </div>
                                     </div>
-                                    <div class="column-item" v-for="(item, index) in movies" :key="index"
-                                        v-motion-slide-left>
+                                    <div class="column-item" v-for="(item, index) in movies" :key="index" data-bs-toggle="modal" data-bs-target="#detailsMovie" v-motion-slide-left>
                                         <p class="col">
                                             <img class="movie-img" :src="item?.image" alt="">
                                         </p>
@@ -93,8 +94,8 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="pills-genre" role="tabpanel" aria-labelledby="pills-genre-tab"
-                            style="padding: 16px;gap:12px">
-                            <div class="d-flex flex-column"
+                            style="padding: 16px;gap:12px;height:100%; ">
+                            <div class="d-flex flex-column classA"
                                 style="gap:12px; background: #ffffff; width:100%; padding:16px; height:100%; position: relative; border-radius:16px">
                                 <div class="d-flex flex-row justify-content-between align-items-center"
                                     style="width:100%; gap:16px">
@@ -104,7 +105,7 @@
                                         <input class="search-input input" placeholder="Enter your input"
                                             v-model="searchQuery" />
                                     </div>
-                                    <button class="btn-add" data-bs-toggle="modal" data-bs-target="#addMovie"><i
+                                    <button class="btn-add" data-bs-toggle="modal" data-bs-target="#addGenre"><i
                                             class="bi bi-plus-lg"></i> Add new genre</button>
                                 </div>
                                 <div class="d-flex flex-column" style="gap:12px; margin-top: 2vh;">
@@ -119,8 +120,7 @@
                                             Name
                                         </div>
                                     </div>
-                                    <div class="column-item" v-for="(item, index) in genre" :key="index"
-                                        v-motion-slide-left>
+                                    <div class="column-item" v-for="(item, index) in genre" :key="index">
                                         <p class="col">
                                             {{ index +1 }}
                                         </p>

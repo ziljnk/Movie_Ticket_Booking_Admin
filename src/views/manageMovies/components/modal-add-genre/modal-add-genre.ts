@@ -7,26 +7,41 @@ import { toast } from "vue3-toastify";
     },
 })
 
-export default class ModalAddMovie extends Vue {
-    public userInput:any={
+export default class ModalAddGenre extends Vue {
+    public isShowModalCategories: any = false
+
+    public movieInput:any={
         name: null,
-        email: null,
-        address: null,
-        password: null,
-        phoneNumber: null,
-        birthday: null,
+        studio: null,
+        publishDate: null,
+        endDate: null,
+        genre: null,
+        type: null,
+        actors: null,
+        director: null,
+        description: null,
+        image: null,
+        trailer: null,
+        duration: null,
+        profit:0,
     }
-    public invalidMessage:any={
-        name: "",
-        email: "",
-        password: "",
-        phoneNumber: "",
-    }
-    public validInput:any=false;
     public async mounted(){
 
     }
-
+    public genre:any=[
+        {
+            id: "654cadf4a705d39ceebe76a9",
+            name: "Horror"
+        },
+        {
+            id: "6552e20b216db62ca800c4e1",
+            name: "Comedy"
+        }
+    ]
+    public selectedGenres: any=[]
+    public toggleModalCategories(event: any) {
+        this.isShowModalCategories = !this.isShowModalCategories
+    }
     // public async handleClickActionButton() {
     //     if (!this.handleValidInput()) return;
     //     const payload = { 
