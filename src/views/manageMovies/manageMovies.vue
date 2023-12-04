@@ -62,6 +62,9 @@
                                         <div class="col text-title-1">
                                             Publish Date
                                         </div>
+                                        <div class="col text-title-1">
+                                            Profit
+                                        </div>
                                     </div>
                                     <div class="column-item" v-for="(item, index) in movies" :key="index" data-bs-toggle="modal" data-bs-target="#detailsMovie" v-motion-slide-left>
                                         <p class="col">
@@ -82,6 +85,9 @@
                                         </p>
                                         <p class="col">
                                             {{ item?.publishDate?.slice(0, 10) }}
+                                        </p>
+                                        <p class="col">
+                                            {{ item?.profit }}
                                         </p>
                                     </div>
                                 </div>
@@ -130,6 +136,7 @@
                                         <p class="col">
                                             {{ item?.name }}
                                         </p>
+                                        
 
                                     </div>
                                 </div>
