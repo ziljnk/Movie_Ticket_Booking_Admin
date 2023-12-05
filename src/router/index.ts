@@ -8,6 +8,7 @@ import ManageSchedules from '@/views/manageSchedule/manageSchedule.vue';
 import ManageTheatres from '@/views/manageTheatre/manageTheatre.vue';
 import ManageTickets from '@/views/manageTicket/manageTicket.vue';
 import ManageVouchers from '@/views/manageVoucher/manageVoucher.vue';
+import Login from '@/views/login/login.vue';
 // const getUserData = async () => {
 //   const sessionTokens = JSON.parse(localStorage.getItem("sessionTokens")!);
 //   if (!sessionTokens) return;
@@ -60,6 +61,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/theatre-management',
     name: 'Manage Theatre',
     component: ManageTheatres
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
   },
   // {
   //   path: '/dashboard',
