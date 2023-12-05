@@ -1,0 +1,64 @@
+<style scope src="./modal-add-schedule.css"></style>
+<script lang="ts" src="./modal-add-schedule.ts"></script>
+
+<template>
+    <div class="modal fade" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="min-width:650px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title w-100" id="ModalLabel">Add New Schedule</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="d-flex flex-column" style="margin:16px;">
+                    <div class="d-flex flex-row" style="gap:32px; margin:16px;">
+                        <div class="col d-flex flex-column" style="gap:16px">
+                            <div class="input-field">
+                                <p class="text-start" style="height:30px; font-weight:600">Movie:</p>
+                                <div class="d-flex flex-column" style="gap:4px">
+                                    <input class="input" v-model="movieInput.name" style="height:30px" type="text"
+                                        placeholder="Enter movie's name" />
+                                </div>
+
+                            </div>
+                            <div class="input-field">
+                                <p class="text-start" style="height:30px; font-weight:600">Start at:</p>
+                                <div class="d-flex flex-row" style="gap:4px">
+                                    <input class="input" v-model="movieInput.name" style="height:30px" type="date" />
+                                    <input class="input" v-model="movieInput.name" style="height:30px" type="time" />
+                                </div>
+                            </div>
+                            <div class="input-field">
+                                <p class="text-start" style="height:30px; font-weight:600">End at:</p>
+                                <div class="d-flex flex-row" style="gap:4px">
+                                    <input class="input" v-model="movieInput.name" style="height:30px" type="date" />
+                                    <input class="input" v-model="movieInput.name" style="height:30px" type="time" />
+                                </div>
+                            </div>
+                            <div class="input-field">
+                                <p class="text-start" style="height:30px; font-weight:600">Theatre:</p>
+                                <div class="d-flex flex-row" style="gap:4px">
+                                    <select class="custom-modal-select" >
+                                        <option disabled selected value hidden="">Choose theatre</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input-field">
+                                <p class="text-start" style="height:30px; font-weight:600">Theatre:</p>
+                                <div class="d-flex flex-row" style="gap:4px">
+                                    <input class="input" v-model="movieInput.name" style="height:30px" type="number" placeholder="Enter schedule's ticket price"/>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="button-outline" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="button-solid">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
