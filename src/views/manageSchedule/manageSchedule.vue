@@ -3,8 +3,8 @@
 <script lang="ts" src="./manageSchedule.ts"></script>
 
 <template>
-    <ModalAddTheatre id="addTheatre" />
-    <ModalDetailTheatre id="detailTheatre" />
+    <ModalAddSchedule id="addSchedule" />
+    <ModalDetailSchedule id="detailSchedule" />
     <div class="manageTheatre-container">
         <div class="background-feature d-flex flex-column">
             <Header />
@@ -23,30 +23,49 @@
                                         <input class="search-input input" placeholder="Enter your input"
                                             v-model="searchQuery" />
                                     </div>
-                                    <button class="btn-add" data-bs-toggle="modal" data-bs-target="#addTheatre"><i
+                                    <button class="btn-add" data-bs-toggle="modal" data-bs-target="#addSchedule"><i
                                             class="bi bi-plus-lg"></i> Add new theatre</button>
                                 </div>
                                 <div class="d-flex flex-column" style="gap:12px; margin-top: 2vh; overflow-y: scroll;">
                                     <div class="d-flex flex-row">
-                                        <div class="col-3 text-title-1">
-                                            No
-                                        </div>
-                                        <div class="col-2 text-title-1">
-                                            Name
+                                        <div class="col text-title-1">
+                                            Image
                                         </div>
                                         <div class="col text-title-1">
-                                            Description
+                                            Movie
+                                        </div>
+                                        <div class="col text-title-1">
+                                            Location
+                                        </div>
+                                        <div class="col text-title-1">
+                                            Start at
+                                        </div>
+                                        <div class="col text-title-1">
+                                            Duration
+                                        </div>
+                                        <div class="col text-title-1">
+                                            Price
                                         </div>
                                     </div>
-                                    <div class="column-item" v-for="(item, index) in theatres" :key="index" data-bs-toggle="modal" data-bs-target="#detailTheatre" v-motion-slide-left>
-                                        <p class="col-3">
-                                            {{ index + 1 }}
+                                    <div class="column-item" v-for="(item, index) in schedules" :key="index" data-bs-toggle="modal" data-bs-target="#detailSchedule" v-motion-slide-left>
+                                        <p class="col">
+                                            <img class="movie-img" :src="item?.movie?.image" alt="">
                                         </p>  
-                                        <p class="col-2">
-                                            {{ item?.name }}
+                                        <p class="col">
+                                            {{ item?.movie?.name }}
+                                        </p>  
+                                        <p class="col">
+                                            {{ item?.theatre?.name }}
                                         </p>
                                         <p class="col">
-                                            {{ item?.description }}
+                                            {{ `${item?.startTime.slice(11, 16)} (${item?.startTime.slice(0, 10)})` }}
+
+                                        </p>
+                                        <p class="col">
+                                            {{ item?.movie?.duration + " min" }}
+                                        </p>
+                                        <p class="col">
+                                            {{ item?.price }}
                                         </p>
                                     </div>
                                 </div>
