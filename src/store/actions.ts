@@ -28,20 +28,31 @@ import {
 
 const actions = {
 
-//   [MutationTypes.LOGIN_USER_REQUEST]: async (
-//     { commit }: { commit: any },
-//     payload: any
-//   ) => {
-//     payload = turnOnDevMode(payload);
-//     const response = await sendPostNoToken("/auth/signin", payload);
-//     if (response) {
-//       return response;
-//     } else {
-//       return null;
-//     }
-//   },
+  [MutationTypes.LOGIN_REQUEST]: async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostNoToken("/api/User/authenticate", payload);
+    if (response) {
+      return response;
+    } else {
+      return null;
+    }
+  },
 
-
+  [MutationTypes.GET_ALL_USERS]: async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetOnce(`/api/User?page=${payload.page}&pageSize=${payload.pageSize}`, payload);
+    if (response) {
+      return response;
+    } else {
+      return null;
+    }
+  },
   
 };
 
