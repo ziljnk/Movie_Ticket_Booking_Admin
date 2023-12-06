@@ -3,40 +3,109 @@
 
 <template>
     <div class="modal fade" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="min-width:850px">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="min-width:1000px">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title w-100" id="ModalLabel">Schedule Details</h5>
+                    <h5 class="modal-title w-100" id="ModalLabel">Movie Details</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="d-flex flex-column" style="margin:16px;">
-                    <div class="d-flex flex-row" style="gap:32px; margin:16px;">
-                        <div class="col d-flex flex-column" style="gap:16px">
-                            <div class="input-field">
-                                <p class="text-start" style="height:30px; font-weight:600">Name:</p>
-                                <div class="d-flex flex-column" style="gap:4px">
-                                    <input class="input" v-model="movieInput.name" style="height:30px" type="text"
-                                        placeholder="Enter genre's name" />
+                <div class="d-flex flex-column " style="margin:16px; overflow-y: scroll;">
+                    <div class="d-flex flex-row ">
+                        <div class="movie-image d-flex justify-content-center" style="gap:32px; height: 450px; width: 30%;">
+                            <img id="movie-image-modal"
+                                src="https://cinestar.com.vn/pictures/Cinestar/11-2023/poster-nguoi-vo-cuoi-cung.jpg"
+                                alt="aaa">
+                        </div>
+                        <div class="col d-flex flex-column" style="gap:16px; width: 70%; padding: 8px;">
+                            <div class="row mb-3">
+                                <label for="inputAuthor" class="col-3 col-form-label">Movie:</label>
+                                <div class="col-9">
+                                    <input v-model="movieInput.publishingYear" type="text" class="form-control"
+                                        id="inputAuthor" />
                                 </div>
-                                 
                             </div>
-                            <div class="input-field">
-                                <p class="text-start" style="height:30px; font-weight:600">Description:</p>
-                                <div class="d-flex flex-column" style="gap:4px">
-                                    <textarea class="text-field input" v-model="movieInput.actors"
-                                        placeholder="Enter theatre's description"></textarea>
+                            <div class="row mb-3">
+                                <label for="inputAuthor" class="col-3 col-form-label">Start at:</label>
+                                <div class="col-9">
+                                    <input v-model="movieInput.publishingYear" type="text" class="form-control"
+                                        id="inputAuthor" />
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputAuthor" class="col-3 col-form-label">End at:</label>
+                                <div class="col-9">
+                                    <input v-model="movieInput.publishingYear" type="text" class="form-control"
+                                        id="inputAuthor" />
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputAuthor" class="col-3 col-form-label">Theatre:</label>
+                                <div class="col-9">
+                                    <input v-model="movieInput.publishingYear" type="text" class="form-control"
+                                        id="inputAuthor" />
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputAuthor" class="col-3 col-form-label">Price:</label>
+                                <div class="col-9">
+                                    <input v-model="movieInput.publishingYear" type="text" class="form-control"
+                                        id="inputAuthor" />
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputAuthor" class="col-3 col-form-label">Revenue:</label>
+                                <div class="col-9">
+                                    <input v-model="movieInput.publishingYear" type="text" class="form-control"
+                                        id="inputAuthor" />
                                 </div>
                             </div>
 
                         </div>
-                    </div>  
 
+                    </div>
+                    <div class="d-flex flex-column justify-content-center align-items-center bookseats">
+                        <div class="row mb-3 d-flex" style="width: 100%; align-items: flex-start;">
+                            <label class="col col-form-label"
+                                style="color: brown; font-weight: 500; font-size: larger;">Booked Seats:</label>
+                        </div>
+                        <table class="seat-table">
+                            <tr class="seat-row" style="margin-left: 40px">
+                                <td class="seat-row-label" style="width: 30px" v-for="(item, index) in 10" :key="index">{{
+                                    item }}</td>
+                            </tr>
+                            <tr class="seat-row" v-for="(itemRow, index) in 10" :key="index">
+                                <td class="seat-column-label">{{ rowArray[itemRow - 1] }}</td>
+                                <td :id="`row-${itemRow}-cell-${itemCell}`" class="seat-cell"
+                                    v-for="(itemCell, index) in 10" :key="index"
+                                    :class="{ 'booked-seat': isSeatBooked(rowArray[itemRow - 1], itemCell) }"></td>
+                            </tr>
+                        </table>
+                        <div class="d-flex justify-content-center align-items-center flex-column" style="width: 100%; margin-left: 50px;">
+                            <div class="screen">
+                            SCREEN
+                        </div>
+
+                        <div class="seat-legend" style="margin-left: 50px;">
+                            <div class="seat-legend-item">
+                                <div class="seat-legend-item-color seat-legend-item-available"></div>
+                                <p>Empty</p>
+                            </div>
+
+                            <div class="seat-legend-item">
+                                <div class="seat-legend-item-color seat-legend-item-selected"></div>
+                                <p>Booked</p>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
                 </div>
+
 
                 <div class="modal-footer">
                     <button type="button" class="button-outline" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="button-solid">Add</button>
+                    <button type="button" class="button-solid">Save Change</button>
                 </div>
             </div>
         </div>
-</div></template>
+    </div>
+</template>
