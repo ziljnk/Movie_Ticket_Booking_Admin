@@ -11,11 +11,11 @@
             <div id="right-login">
                 <h3 style="font-weight: bolder; color: #c35917; align-self: flex-start; margin-top: 15vh;">Welcome Back!
                 </h3>
-                <input class="input" v-model="userInput" style="height:5vh; width: 100%; padding: 1vw; margin: 2vh 0;"
+                <input class="input" v-model="username" style="height:5vh; width: 100%; padding: 1vw; margin: 2vh 0;"
                     type="text" placeholder="Enter your account" />
-                <input class="input" v-model="userInput" style="height:5vh; width: 100%; padding: 1vw; margin: 2vh 0;"
+                <input class="input" v-model="password" style="height:5vh; width: 100%; padding: 1vw; margin: 2vh 0;"
                     type="text" placeholder="Enter your password" />
-                <button class="input btn-login" style="height:5vh; width: 100%; margin: 2vh 0;">Sign In</button>
+                <button @click="handleSignIn" class="input btn-login" style="height:5vh; width: 100%; margin: 2vh 0;">Sign In</button>
             </div>
         </div>
 
