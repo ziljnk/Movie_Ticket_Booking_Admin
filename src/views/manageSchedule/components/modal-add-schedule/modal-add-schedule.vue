@@ -38,7 +38,7 @@
                                 <p class="text-start" style="height:30px; font-weight:600">Theatre:</p>
                                 <div class="d-flex flex-row" style="gap:4px">
                                     <select class="custom-modal-select" >
-                                        <option disabled selected value hidden="">Choose theatre</option>
+                                        <option disabled selected value hidden>Choose theatre</option>
                                     </select>
                                 </div>
                             </div>
