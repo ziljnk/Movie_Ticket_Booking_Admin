@@ -2,7 +2,7 @@ import { Vue,Options } from 'vue-class-component'
 import NavigationBar from '@/components/navigationBar/navigationBar.vue'
 import Header from '@/components/header/header.vue'
 import ModalAddVoucher from './components/modal-add-voucher/modal-add-voucher.vue';
-import ModalDetailVoucher from './components/modal-detail-theatre/modal-detail-voucher.vue';
+import ModalDetailVoucher from './components/modal-detail-voucher/modal-detail-voucher.vue';
 @Options({
     components: {
         NavigationBar,
