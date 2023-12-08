@@ -53,7 +53,72 @@ const actions = {
       return null;
     }
   },
-  
+  [MutationTypes.GET_CURRENT_USER]: async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload); 
+    const response = await sendGetOnce("/api/User/current");
+    if (response) {
+      return response;
+    } else {
+      return null;
+    }
+  },
+
+  [MutationTypes.GET_ALL_MOVIES] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetNoToken("/api/Movie", payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.GET_ALL_GENRES] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetNoToken("/api/Genre", payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.CREATE_GENRE]: async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce("/api/Genre", payload);
+    if (response) {
+      return response;
+    } else {
+      return null;
+    }
+  },
+  [MutationTypes.SEARCH_GENRE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetNoToken("/api/Genre/searchBasic", payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
 };
 
 export default actions;
