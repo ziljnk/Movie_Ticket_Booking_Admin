@@ -66,7 +66,7 @@
                                             Profit
                                         </div>
                                     </div>
-                                    <div class="column-item" v-for="(item, index) in movies" :key="index" data-bs-toggle="modal" data-bs-target="#detailsMovie" v-motion-slide-left>
+                                    <div class="column-item" v-for="(item, index) in allMovies" :key="index" data-bs-toggle="modal" data-bs-target="#detailsMovie" >
                                         <p class="col">
                                             <img class="movie-img" :src="item?.image" alt="">
                                         </p>
@@ -93,7 +93,7 @@
                                 </div>
                                 <div class="count-page">
                                     <div :class="[currentPage === index + 1 ? 'current-page-number' : '', 'page-number']"
-                                        v-for="(item, index) in totalPage" :key="index">
+                                        v-for="(item, index) in totalPages" :key="index"  @click="handleNextPage('movie',index)">
                                         <p>{{ index + 1 }}</p>
                                     </div>
                                 </div>
@@ -109,7 +109,7 @@
                                         <div class="d-flex justify-content-center align-items-center"
                                             style="font-weight:600; font-size:16px; color: #712f06">Search:</div>
                                         <input class="search-input input" placeholder="Enter your input"
-                                            v-model="searchQuery" />
+                                            v-model="searchQueryGenre" />
                                     </div>
                                     <button class="btn-add" data-bs-toggle="modal" data-bs-target="#addGenre"><i
                                             class="bi bi-plus-lg"></i> Add new genre</button>
@@ -126,8 +126,8 @@
                                             Name
                                         </div>
                                     </div>
-                                    <div class="column-item" v-for="(item, index) in genre" :key="index">
-                                        <p class="col">
+                                    <div class="column-item" v-for="(item, index) in allGenre" :key="index" v-motion-slide-left> 
+                                        <p class="col" style="font-weight: bolder;">
                                             {{ index +1 }}
                                         </p>
                                         <p class="col">
@@ -141,8 +141,8 @@
                                     </div>
                                 </div>
                                 <div class="count-page">
-                                    <div :class="[currentPage === index + 1 ? 'current-page-number' : '', 'page-number']"
-                                        v-for="(item, index) in totalPage" :key="index">
+                                    <div :class="[currentPageGenres === index + 1 ? 'current-page-number' : '', 'page-number']"
+                                        v-for="(item, index) in totalPageGenres" :key="index" @click="handleNextPage('genre',index)">
                                         <p>{{ index + 1 }}</p>
                                     </div>
                                 </div>

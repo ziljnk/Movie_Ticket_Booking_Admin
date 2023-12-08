@@ -9,72 +9,85 @@ import ManageTheatres from '@/views/manageTheatre/manageTheatre.vue';
 import ManageTickets from '@/views/manageTicket/manageTicket.vue';
 import ManageVouchers from '@/views/manageVoucher/manageVoucher.vue';
 import Login from '@/views/login/login.vue';
-// const getUserData = async () => {
-//   const sessionTokens = JSON.parse(localStorage.getItem("sessionTokens")!);
-//   if (!sessionTokens) return;
-//   const subject_id = sessionTokens;
-//   const payload = {
-//     subject_id,
-//   };
-//   const res = await store.dispatch(
-//     MutationTypes.GET_CURRENT_USER,
-//     payload
-//   );
-//   if (!res) return;
-//   if (res.status === 200) {
-//     store.commit("setUserData", res.data);
-//     return
-//   }
-// };
+const getUserData = async () => {
+  const sessionTokens = JSON.parse(localStorage.getItem("sessionTokens")!);
+  if (!sessionTokens) return;
+  const subject_id = sessionTokens;
+  const payload = {
+    subject_id,
+  };
+  const res = await store.dispatch(
+    MutationTypes.GET_CURRENT_USER,
+    payload
+  );
+  if (!res) return;
+  if (res.status === 200) {
+    store.commit("setUserData", res.data);
+    return
+  }
+};
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'Dashboard',
-    component: Dashboard
+    component: Dashboard,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: '/movie-management',
     name: 'Manage Movies',
-    component: ManageMovies
+    component: ManageMovies,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: '/schedule-management',
     name: 'Manage Schedules',
-    component: ManageSchedules
+    component: ManageSchedules,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: '/new-management',
     name: 'Manage News',
-    component: ManageNews
+    component: ManageNews,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: '/voucher-management',
     name: 'Manage Vouchers',
-    component: ManageVouchers
+    component: ManageVouchers,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: '/ticket-management',
     name: 'Manage Tickets',
-    component: ManageTickets
+    component: ManageTickets,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: '/theatre-management',
     name: 'Manage Theatre',
-    component: ManageTheatres
+    component: ManageTheatres,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: '/login',
     name: 'Login',
     component: Login
   },
-  // {
-  //   path: '/dashboard',
-  //   name: 'dashboard',
-  //   component: DashBoard,
-  //   meta: {
-  //     requiresAuth: true,
-  //   },
-  // },
 ]
 
 const router = createRouter({
@@ -88,21 +101,21 @@ router.beforeEach((to, from, next) => {
   return;
 });
 
-// router.beforeEach(async (to, from, next) => {
-//   if (to.matched.some((record) => record.meta.requiresAuth)) {
-//     let userData:any = await getUserData();
-//     userData = store.state.userData;
-//     if (!userData) {
-//       next({ path: "/" });
-//       return;
-//     }
-//     userData = store.state.userData;
-//     if (!userData) {
-//       await getUserData();
-//     }
-//     userData = store.state.userData;
-//   }
-//   next();
-// });
+router.beforeEach(async (to, from, next) => {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    let userData:any = await getUserData();
+    userData = store.state.userData;
+    if (!userData) {
+      next({ path: "/login" });
+      return; 
+    }
+    userData = store.state.userData;
+    if (!userData) {
+      await getUserData();
+    }
+    userData = store.state.userData;
+  }
+  next();
+});
 
 export default router

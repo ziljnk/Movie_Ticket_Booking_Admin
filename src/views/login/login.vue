@@ -14,7 +14,7 @@
                 <input class="input" v-model="username" style="height:5vh; width: 100%; padding: 1vw; margin: 2vh 0;"
                     type="text" placeholder="Enter your account" />
                 <input class="input" v-model="password" style="height:5vh; width: 100%; padding: 1vw; margin: 2vh 0;"
-                    type="text" placeholder="Enter your password" />
+                type="password" autocomplete="off" placeholder="Enter your password" />
                 <button @click="handleSignIn" class="input btn-login" style="height:5vh; width: 100%; margin: 2vh 0;">Sign In</button>
             </div>
         </div>
