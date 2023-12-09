@@ -14,6 +14,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 import Vue3Toastify, { type ToastContainerOptions } from "vue3-toastify";
 import VueSplide from "@splidejs/vue-splide";
+import VueApexCharts from "vue3-apexcharts";
 
 // Import Bootstrap and BootstrapVue CSS files (order is important)
 import "bootstrap/dist/css/bootstrap.css";
@@ -31,5 +32,7 @@ createApp(App)
     }
   } as ToastContainerOptions)
   .use(VueSplide)
+  .use(VueApexCharts)
   .use(MotionPlugin)
   .mount("#app");
+  
