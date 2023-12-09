@@ -106,6 +106,30 @@ const actions = {
       return null;
     }
   },
+  [MutationTypes.CREATE_MOVIE]: async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce("/api/Movie", payload);
+    if (response) {
+      return response;
+    } else {
+      return null;
+    }
+  },
+  [MutationTypes.UPLOAD_IMAGE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce(`/api/Cloudinary/upload-image`, payload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
   [MutationTypes.SEARCH_GENRE] : async (
     { commit }: { commit: any },
     payload: any

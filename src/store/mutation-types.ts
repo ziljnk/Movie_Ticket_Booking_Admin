@@ -6,4 +6,6 @@ export class MutationTypes {
     public static GET_ALL_GENRES = 'GET_ALL_GENRES';
     public static CREATE_GENRE = 'CREATE_GENRE';
     public static SEARCH_GENRE = 'SEARCH_GENRE';
+    public static UPLOAD_IMAGE = 'UPLOAD_IMAGE';
+    public static CREATE_MOVIE = 'CREATE_MOVIE';
 }

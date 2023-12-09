@@ -8,14 +8,16 @@ import { toast } from "vue3-toastify";
 })
 
 export default class ModalAddMovie extends Vue {
-    public isShowModalCategories: any = false
-
+    public allGenres: any = []
+    public isShowModalGenres: any = false
+    public fileInput:any = [];
+    public fileInput1:any = [];
     public movieInput:any={
         name: null,
         studio: null,
         publishDate: null,
         endDate: null,
-        genre: null,
+        genre: [],
         type: null,
         actors: null,
         director: null,
@@ -26,75 +28,91 @@ export default class ModalAddMovie extends Vue {
         profit:0,
     }
     public async mounted(){
-
+        this.fetchGenres()
     }
-    public genre:any=[
-        {
-            id: "654cadf4a705d39ceebe76a9",
-            name: "Horror"
-        },
-        {
-            id: "6552e20b216db62ca800c4e1",
-            name: "Comedy"
-        }
-    ]
+    public async fetchGenres() {
+        let res = await this.$store.dispatch(MutationTypes.GET_ALL_GENRES,{
+            pageSize:1000,
+        })
+    
+        this.allGenres = res.data.data
+    }
+
+
     public selectedGenres: any=[]
     public toggleModalCategories(event: any) {
-        this.isShowModalCategories = !this.isShowModalCategories
+        this.isShowModalGenres = !this.isShowModalGenres
     }
-    // public async handleClickActionButton() {
-    //     if (!this.handleValidInput()) return;
-    //     const payload = { 
-    //         name: this.userInput.name,
-    //         email: this.userInput.email,
-    //         address: this.userInput.address,
-    //         password: this.userInput.password,
-    //         phoneNumber: this.userInput.phoneNumber,
-    //         birthdate: this.userInput.birthday,
-    //     };
-    //     const res = await this.$store.dispatch(
-    //       MutationTypes.CREATE_CUSTOMER,
-    //       payload
-    //     );
-    //     if(res.status ===200){
-    //         toast.success('Successfully created');
-    //         window.location.reload();
-    //     }
-    // }
 
-    // public handleValidInput(){
-    //     this.validInput = false;
+    public async handleClickBtn() {
+        const formData = new FormData();
+        formData.append('ImageFile', this.fileInput[0]);
 
-    //     this.invalidMessage.name = "";
-    //     if (!this.userInput.name) {
-    //         this.invalidMessage.name = "Please enter customer's name";
-    //         return
-    //     }
+        try {
+            // Thực hiện mutation UPLOAD_IMAGE để upload hình ảnh
+            const uploadResponse = await this.$store.dispatch(
+                MutationTypes.UPLOAD_IMAGE,
+                formData
+            );
 
-    //     this.invalidMessage.email = "";
-    //     if (!isValidEmail(this.userInput.email) || !this.userInput.email) {
-    //         this.invalidMessage.email = "Please fill a valid email";
-    //         return
-    //     }
-        
-    //     this.invalidMessage.password = "";
+            if (uploadResponse.status === 200) {
+                toast.success('Image uploaded successfully');
+                const imageUrl = uploadResponse.data.imageUrl;
 
-    //     if (!this.userInput.password) {
-    //         this.invalidMessage.password = "Please enter customer's password";
-    //         return
-    //     }else
-    //     if (this.userInput.password.length < 6) {
-    //         this.invalidMessage.password = "Password must be at least 6 characters";
-    //         return
-    //     }
+                // Sử dụng thông tin từ response để tạo movie mới
+                const createMovieResponse = await this.$store.dispatch(
+                    MutationTypes.CREATE_MOVIE,
+                    {
+                        name: this.movieInput.name,
+                        studio: this.movieInput.studio,
+                        publishDate: this.movieInput.publishDate,
+                        endDate: this.movieInput.endDate,
+                        genre: this.movieInput.genre,
+                        type: this.movieInput.type,
+                        actors: this.movieInput.actors,
+                        director: this.movieInput.director,
+                        description: this.movieInput.description,
+                        image: imageUrl,
+                        trailer: this.movieInput.trailer,
+                        duration: this.movieInput.duration,
+                        profit:0,
+                    }
+                );
 
-    //     this.invalidMessage.phoneNumber = "";
-    //     if (!this.userInput.phoneNumber) {
-    //         this.invalidMessage.phoneNumber = "Please enter customer's phone number";
-    //         return
-    //     }
+                if (createMovieResponse.status === 201) {
+                    toast.success('Movie created successfully');
+                } else {
+                    toast.error('Failed to create movie');
+                }
+            } else {
+                toast.error('Failed to upload image');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
 
-    //     this.validInput = true;
-    //     return this.validInput
-    // }
+    
+
+    public onFileSelected(event: any) {
+        const selectedFiles = (event.target as HTMLInputElement).files;
+    
+        if (selectedFiles) {
+          for (let i = 0; i < selectedFiles.length; i++) {
+            const file = selectedFiles[i];
+    
+            if (file.type === 'image/png' || file.type === 'image/jpeg' || file.type === 'image/jpg') {
+              this.fileInput[0]=file;
+              const reader = new FileReader();
+              reader.onload = () => {
+                this.fileInput1[0]=reader.result;
+              };
+              reader.readAsDataURL(file);
+            }else {
+                toast.error("Invalid file");
+            }
+          }
+        }
+    }
+
 }

@@ -36,6 +36,7 @@ export default class ManageMovies extends Vue {
       public async fetchMovies() {
         let res = await this.$store.dispatch(MutationTypes.GET_ALL_MOVIES, {
          page: this.currentPage,
+        pageSize:4,
        })
    
         this.allMovies = res.data.data
