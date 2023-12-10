@@ -173,6 +173,19 @@ const actions = {
       return null
     }
   },
+  [MutationTypes.SEARCH_MOVIE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetNoToken("/api/Movie/search", payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
 };
 
 export default actions;

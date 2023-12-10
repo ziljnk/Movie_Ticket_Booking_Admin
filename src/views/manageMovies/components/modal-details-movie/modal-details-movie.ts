@@ -150,10 +150,10 @@ export default class ModalDetailsMovie extends Vue {
     public async handleDeleteMovie() {
         if(this.movie?.profit === 0){
             let res = await this.$store.dispatch(MutationTypes.DELETE_A_MOVIE, {
-                movieId: this.movie._id
+                movieId: this.movie.id
             })
             if (res.status === 200) {
-                toast.success(res.data.message)
+                toast.success("Delete successfully!")
                 setTimeout(() => {
                     window.location.reload();
                 }, 2000);

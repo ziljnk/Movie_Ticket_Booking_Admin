@@ -15,6 +15,7 @@ import { MutationTypes } from '@/store/mutation-types';
     },
     watch: {
       searchQueryGenre: 'handleSearchQueryGenreChange',
+      searchQuery: 'handleSearchQueryChange',
   },
 })
 export default class ManageMovies extends Vue {
@@ -80,6 +81,23 @@ export default class ManageMovies extends Vue {
     
         this.totalPageGenres = res.data.totalPages
         this.allGenre = res.data.data
+      }
+      public handleSearchQueryChange(val: string, oldVal: string) {
+        if (val === '') {
+          this.fetchMovies();
+      } else {
+          this.searchMovie();
+      }
+    }
+      public async searchMovie() {
+        let res = await this.$store.dispatch(MutationTypes.SEARCH_MOVIE, {
+         query:this.searchQuery,
+         page: this.currentPage,
+         pageSize:7,
+        })
+    
+        this.totalPages = res.data.totalPages
+        this.allMovies = res.data.data
       }
       public handleDetailMovie(item:any){
         (this.$refs['detailsMovie'] as any).openModal()

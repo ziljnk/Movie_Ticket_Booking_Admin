@@ -3,9 +3,12 @@
 <script lang="ts" src="./modal-details-movie.ts"></script>
 
 <template>
-    <FormattedModal id="formatted-modal" ref="modal-delete-movie-component" title="Delete this movie" content="Do you want to delete this movie?" actionButtonTitle="Delete" :isDangerAction="true" @handleClickActionButton="handleDeleteMovie"/>
+    <FormattedModal id="formatted-modal" ref="modal-delete-movie-component" title="Delete this movie"
+        content="Do you want to delete this movie?" actionButtonTitle="Delete" :isDangerAction="true"
+        @handleClickActionButton="handleDeleteMovie" />
 
-    <div class="modal fade" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true" ref="modal-details-movie" id="detailsMovie">
+    <div class="modal fade" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true" ref="modal-details-movie"
+        id="detailsMovie">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="min-width:1000px">
             <div class="modal-content">
                 <div class="modal-header">
@@ -104,19 +107,22 @@
                         <div class="row mb-3">
                             <label for="inputAuthor" class="col-3 col-form-label">Profit:</label>
                             <div class="col-9">
-                                <input v-model="movieInput.profit" type="number" class="form-control" id="inputAuthor" disabled/>
+                                <input v-model="movieInput.profit" type="number" class="form-control" id="inputAuthor"
+                                    disabled />
                             </div>
                         </div>
                     </div>
 
                 </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" @click="handleOpenModalDeleteMovie">Delete</button>
-                    <button type="button" class="button-outline" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="button-solid" @click="handleUpdate">Save Change</button>
+                <div class="modal-footer d-flex justify-content-between">
+                    <button type="button" class="button-solid" style="background-color: red;" data-bs-dismiss="modal"
+                        @click="handleOpenModalDeleteMovie">Delete</button>
+                    <div class="d-flex flex-row">
+                        <button type="button" class="button-outline" data-bs-dismiss="modal" style="margin-right: 1vw;">Close</button>
+                        <button type="button" class="button-solid" @click="handleUpdate">Save Change</button>
+                    </div>
                 </div>
-            </div>
         </div>
     </div>
-</template>
+</div></template>
