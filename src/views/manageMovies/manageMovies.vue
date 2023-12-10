@@ -5,7 +5,7 @@
 <template>
     <ModalAddMovie id="addMovie" />
     <ModalAddGenre id="addGenre" />
-    <ModalDetailsMovie id="detailsMovie" />
+    <ModalDetailsMovie ref="detailsMovie" id="detailsMovie"/>
     <div class="movie-container">
         <div class="background-feature d-flex flex-column">
             <Header />
@@ -66,7 +66,7 @@
                                             Profit
                                         </div>
                                     </div>
-                                    <div class="column-item" v-for="(item, index) in allMovies" :key="index" data-bs-toggle="modal" data-bs-target="#detailsMovie" @click="handleDetailMovie(item)">
+                                    <div class="column-item" v-for="(item, index) in allMovies" :key="index" @click="handleDetailMovie(item)">
                                         <p class="col">
                                             <img class="movie-img" :src="item?.image" alt="">
                                         </p>

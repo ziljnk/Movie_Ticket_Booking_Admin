@@ -2,6 +2,7 @@ import { Vue, Options } from "vue-class-component";
 import { MutationTypes } from "@/store/mutation-types";
 import { toast } from "vue3-toastify";
 import FormattedModal from "@/components/modal/modal.vue";
+import { Modal } from "bootstrap";
 
 @Options({
   watch: {
@@ -137,8 +138,13 @@ export default class ModalDetailsMovie extends Vue {
         }, 2000);
       }
   }
-  public handleOpenModalDeleteMovie() {
-    (this.$refs['modal-delete-movie-component'] as any).openModal()
+    public handleOpenModalDeleteMovie() {
+        (this.$refs['modal-delete-movie-component'] as any).openModal()
+    }
+
+    public async openModal() {
+        const myModal = new Modal(this.$refs["modal-details-movie"] as any)
+        myModal.show()
     }
 
     public async handleDeleteMovie() {

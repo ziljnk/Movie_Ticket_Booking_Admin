@@ -3,9 +3,9 @@
 <script lang="ts" src="./modal-details-movie.ts"></script>
 
 <template>
-    <FormattedModal ref="modal-delete-movie-component" title="Delete this movie" content="Do you want to delete this movie?" actionButtonTitle="Delete" :isDangerAction="true" @handleClickActionButton="handleDeleteMovie"/>
+    <FormattedModal id="formatted-modal" ref="modal-delete-movie-component" title="Delete this movie" content="Do you want to delete this movie?" actionButtonTitle="Delete" :isDangerAction="true" @handleClickActionButton="handleDeleteMovie"/>
 
-    <div class="modal fade" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal fade" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true" ref="modal-details-movie" id="detailsMovie">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="min-width:1000px">
             <div class="modal-content">
                 <div class="modal-header">

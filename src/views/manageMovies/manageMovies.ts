@@ -82,6 +82,7 @@ export default class ManageMovies extends Vue {
         this.allGenre = res.data.data
       }
       public handleDetailMovie(item:any){
+        (this.$refs['detailsMovie'] as any).openModal()
         this.$store.commit("setMovie", item);
       }
 }
