@@ -8,4 +8,6 @@ export class MutationTypes {
     public static SEARCH_GENRE = 'SEARCH_GENRE';
     public static UPLOAD_IMAGE = 'UPLOAD_IMAGE';
     public static CREATE_MOVIE = 'CREATE_MOVIE';
+    public static UPDATE_MOVIE = 'UPDATE_MOVIE';
+    public static DELETE_A_MOVIE = 'DELETE_A_MOVIE';
 }

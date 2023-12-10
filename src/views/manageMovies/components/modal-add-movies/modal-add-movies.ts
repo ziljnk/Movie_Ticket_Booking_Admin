@@ -81,6 +81,9 @@ export default class ModalAddMovie extends Vue {
 
                 if (createMovieResponse.status === 201) {
                     toast.success('Movie created successfully');
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 2000);
                 } else {
                     toast.error('Failed to create movie');
                 }

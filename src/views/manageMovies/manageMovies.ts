@@ -81,4 +81,7 @@ export default class ManageMovies extends Vue {
         this.totalPageGenres = res.data.totalPages
         this.allGenre = res.data.data
       }
+      public handleDetailMovie(item:any){
+        this.$store.commit("setMovie", item);
+      }
 }
