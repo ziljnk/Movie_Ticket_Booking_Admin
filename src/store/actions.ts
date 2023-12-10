@@ -106,12 +106,79 @@ const actions = {
       return null;
     }
   },
+  [MutationTypes.CREATE_MOVIE]: async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce("/api/Movie", payload);
+    if (response) {
+      return response;
+    } else {
+      return null;
+    }
+  },
+  [MutationTypes.UPLOAD_IMAGE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce(`/api/Cloudinary/upload-image`, payload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+  [MutationTypes.UPDATE_MOVIE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const movie_id = payload.movie_id
+    let newPayload = { ...payload };
+    delete newPayload.expenses_id;
+    const response = await sendPutOnce(`/api/Movie/${movie_id}`, newPayload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.DELETE_A_MOVIE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendDeleteOnce(`/api/Movie/${payload.movieId}`, payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
   [MutationTypes.SEARCH_GENRE] : async (
     { commit }: { commit: any },
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
     const response = await sendGetNoToken("/api/Genre/searchBasic", payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+  [MutationTypes.SEARCH_MOVIE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetNoToken("/api/Movie/search", payload);
 
     if (response) {
       return response
