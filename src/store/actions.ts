@@ -94,6 +94,34 @@ const actions = {
     }
   },
 
+  [MutationTypes.GET_ALL_SCHEDULES] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetNoToken("/api/Schedule", payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.GET_ALL_THEATRES] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetNoToken("/api/Theatre", payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
   [MutationTypes.CREATE_GENRE]: async (
     { commit }: { commit: any },
     payload: any
@@ -112,6 +140,18 @@ const actions = {
   ) => {
     payload = turnOnDevMode(payload);
     const response = await sendPostOnce("/api/Movie", payload);
+    if (response) {
+      return response;
+    } else {
+      return null;
+    }
+  },
+  [MutationTypes.CREATE_SCHEDULE]: async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce("/api/Schedule", payload);
     if (response) {
       return response;
     } else {
@@ -146,12 +186,41 @@ const actions = {
     }
   },
 
+  [MutationTypes.UPDATE_SCHEDULE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const schedule_id = payload.schedule_id
+    let newPayload = { ...payload };
+    delete newPayload.expenses_id;
+    const response = await sendPutOnce(`/api/Schedule/${schedule_id}`, newPayload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
   [MutationTypes.DELETE_A_MOVIE] : async (
     { commit }: { commit: any },
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
     const response = await sendDeleteOnce(`/api/Movie/${payload.movieId}`, payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+  [MutationTypes.DELETE_A_SCHEDULE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendDeleteOnce(`/api/Schedule/${payload.scheduleId}`, payload);
 
     if (response) {
       return response
@@ -179,6 +248,19 @@ const actions = {
   ) => {
     payload = turnOnDevMode(payload);
     const response = await sendGetNoToken("/api/Movie/search", payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+  [MutationTypes.SEARCH_SCHEDULE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetNoToken("/api/Schedule/search", payload);
 
     if (response) {
       return response
