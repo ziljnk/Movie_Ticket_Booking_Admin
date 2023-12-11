@@ -137,6 +137,9 @@ export default class ModalDetailsMovie extends Vue {
             window.location.reload();
         }, 2000);
       }
+      else{
+        toast.error(res.data);
+      }
   }
     public handleOpenModalDeleteMovie() {
         (this.$refs['modal-delete-movie-component'] as any).openModal()
@@ -158,7 +161,7 @@ export default class ModalDetailsMovie extends Vue {
                     window.location.reload();
                 }, 2000);
             } else {
-                toast.error(res.data.message)
+                toast.error(res.data)
             }
         }
         else{

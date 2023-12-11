@@ -13,7 +13,6 @@ export default class ModalAddGenre extends Vue {
     public invalidMessage:any={
         name: "",
     }
-
         public async handleClickActionButton() {
             if (!this.handleValidInput()) return;
             const payload = { 
@@ -24,23 +23,23 @@ export default class ModalAddGenre extends Vue {
             payload
             );
             if(res.status ===201){
-                toast.success('Successfully created');
+                toast.success(res.data);
                 setTimeout(() => {
                     window.location.reload();
                 }, 2000);
+            }
+            else{
+                toast.success(res.data);
             }
         }
 
     public handleValidInput(){
         this.validInput = false;
-
         this.invalidMessage.name = "";
         if (!this.genreName) {
             this.invalidMessage.name = "Please enter genre's name";
             return
         }
-
-
         this.validInput = true;
         return this.validInput
     }
