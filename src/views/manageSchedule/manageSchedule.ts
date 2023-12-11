@@ -11,6 +11,9 @@ import { MutationTypes } from "@/store/mutation-types";
     ModalAddSchedule,
     ModalDetailSchedule,
   },
+  watch: {
+    searchQuery: 'handleSearchQueryChange',
+},
 })
 export default class ManageSchedule extends Vue {
   public searchQuery: any = null;
@@ -34,5 +37,22 @@ export default class ManageSchedule extends Vue {
   public handleDetaiSchedule(item:any){
     (this.$refs['detailSchedule'] as any).openModal()
     this.$store.commit("setSchedule", item);
+  }
+  public handleSearchQueryChange(val: string, oldVal: string) {
+    if (val === '') {
+      this.fetchSchedules();
+  } else {
+      this.searchMovie();
+  }
+}
+  public async searchMovie() {
+    let res = await this.$store.dispatch(MutationTypes.SEARCH_SCHEDULE, {
+     query:this.searchQuery,
+     page: this.currentPage,
+     pageSize:5,
+    })
+
+    this.totalPage = res.data.totalPages
+    this.allSchedules = res.data.data
   }
 }

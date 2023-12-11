@@ -78,12 +78,12 @@ export default class ModalAddSchedule extends Vue {
 
     if (res.status === 201) {
       console.log(res.data);
-      // toast.success("Successfully created schedule!");
-      // setTimeout(() => {
-      //     window.location.reload();
-      // }, 2000);
+      toast.success("Successfully created schedule!");
+      setTimeout(() => {
+          window.location.reload();
+      }, 2000);
     } else {
-      toast.error(res.data.message);
+      toast.error(res.data);
     }
   }
 }

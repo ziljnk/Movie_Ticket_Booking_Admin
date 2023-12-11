@@ -29,13 +29,13 @@
                         </div>
                         <div class="row mb-3">
                             <label for="inputAuthor" class="col-3 col-form-label">Studio:</label>
-                            <div class="col-9">
+                            <div class="col-4">
                                 <input v-model="movieInput.studio" type="text" class="form-control" id="inputAuthor" />
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="selectCategories" class="col-form-label col-3">Genre:</label>
-                            <div class="col-9" style="position: relative;" @click="toggleModalCategories" required>
+                            <div class="col-5" style="position: relative;" @click="toggleModalCategories" required>
                                 <div class="custom-select">
                                     <p>Select genres</p>
                                     <i class="bi bi-chevron-down"></i>
@@ -52,7 +52,7 @@
                         </div>
                         <div class="row mb-3">
                             <label for="inputAuthor" class="col-3 col-form-label">Type:</label>
-                            <div class="col-9">
+                            <div class="col-5">
                                 <select v-model="movieInput.type" class="custom-select" id="inputAuthor">
                                     <option value="2D">2D</option>
                                     <option value="3D">3D</option>
@@ -62,19 +62,19 @@
 
                         <div class="row mb-3">
                             <label for="inputAuthor" class="col-3 col-form-label">Start at:</label>
-                            <div class="col-9">
+                            <div class="col-4">
                                 <input v-model="movieInput.publishDate" type="date" class="form-control" id="inputAuthor" />
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputAuthor" class="col-3 col-form-label">End at:</label>
-                            <div class="col-9">
+                            <div class="col-4">
                                 <input v-model="movieInput.endDate" type="date" class="form-control" id="inputAuthor" />
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputAuthor" class="col-3 col-form-label">Director:</label>
-                            <div class="col-9">
+                            <div class="col-5">
                                 <input v-model="movieInput.director" type="text" class="form-control" id="inputAuthor" />
                             </div>
                         </div>
@@ -87,8 +87,8 @@
                         </div>
                         <div class="row mb-3">
                             <label for="inputAuthor" class="col-3 col-form-label">Duration:</label>
-                            <div class="col-9">
-                                <input v-model="movieInput.duration" type="number" class="form-control" id="inputAuthor" />
+                            <div class="col-2">
+                                <input v-model="movieInput.duration" type="number" class="form-control" id="inputAuthor" min="0"/>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -106,7 +106,7 @@
                         </div>
                         <div class="row mb-3">
                             <label for="inputAuthor" class="col-3 col-form-label">Profit:</label>
-                            <div class="col-9">
+                            <div class="col-4">
                                 <input v-model="movieInput.profit" type="number" class="form-control" id="inputAuthor"
                                     disabled />
                             </div>
