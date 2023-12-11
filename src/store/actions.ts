@@ -186,6 +186,45 @@ const actions = {
       return null
     }
   },
+
+  [MutationTypes.CREATE_A_NEWS]: async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce("/api/News", payload);
+    if (response) {
+      return response;
+    } else {
+      return null;
+    }
+  },
+
+  [MutationTypes.GET_ALL_NEWS]: async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetNoToken(`/api/News?page=${payload.page}&pageSize=${payload.pageSize}`, payload);
+    if (response) {
+      return response;
+    } else {
+      return null;
+    }
+  },
+
+  [MutationTypes.UPDATE_NEWS]: async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPutOnce(`/api/News/${payload.newsId}`, payload);
+    if (response) {
+      return response;
+    } else {
+      return null;
+    }
+  },
 };
 
 export default actions;

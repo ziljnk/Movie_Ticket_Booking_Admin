@@ -1,0 +1,14 @@
+.search-input{
+    height: 30px; 
+    width: 100%; 
+}
+
+.search-input:focus{
+    border: none;
+    outline: 1px solid #712f06;
+}
+
+td {
+    max-height: 41px;
+    text-overflow: ellipsis;
+}

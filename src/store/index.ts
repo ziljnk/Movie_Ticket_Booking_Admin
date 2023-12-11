@@ -5,7 +5,7 @@ export default createStore({
   state: {
     userData:null,
     movie:null,
-
+    chosenNews: null
   },
   getters: {
   },
@@ -16,6 +16,9 @@ export default createStore({
     setMovie(state, payload) {
       state.movie = payload;
     },
+    setChosenNews(state, payload) {
+        state.chosenNews = payload;
+    }
   },
   actions: actions,
   modules: {

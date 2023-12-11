@@ -11,4 +11,7 @@ export class MutationTypes {
     public static CREATE_MOVIE = 'CREATE_MOVIE';
     public static UPDATE_MOVIE = 'UPDATE_MOVIE';
     public static DELETE_A_MOVIE = 'DELETE_A_MOVIE';
+    public static CREATE_A_NEWS = 'CREATE_A_NEWS';
+    public static GET_ALL_NEWS = 'GET_ALL_NEWS';
+    public static UPDATE_NEWS = 'UPDATE_NEWS';
 }
