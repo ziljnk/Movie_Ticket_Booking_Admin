@@ -4,7 +4,7 @@
 
 <template>
     <ModalAddSchedule id="addSchedule" />
-    <ModalDetailSchedule id="detailSchedule" />
+    <ModalDetailSchedule ref="detailSchedule"  id="detailSchedule" />
     <div class="manageTheatre-container">
         <div class="background-feature d-flex flex-column">
             <Header />
@@ -47,7 +47,7 @@
                                             Price
                                         </div>
                                     </div>
-                                    <div class="column-item" v-for="(item, index) in schedules" :key="index" data-bs-toggle="modal" data-bs-target="#detailSchedule" v-motion-slide-left>
+                                    <div class="column-item" v-for="(item, index) in allSchedules" :key="index" v-motion-slide-left @click="handleDetaiSchedule(item)">
                                         <p class="col">
                                             <img class="movie-img" :src="item?.movie?.image" alt="">
                                         </p>  
@@ -65,7 +65,7 @@
                                             {{ item?.movie?.duration + " min" }}
                                         </p>
                                         <p class="col">
-                                            {{ item?.price }}
+                                            {{ item?.price }}$
                                         </p>
                                     </div>
                                 </div>

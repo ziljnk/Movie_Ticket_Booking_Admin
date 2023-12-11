@@ -16,3 +16,23 @@
     position: relative;
     font-size: 14px;
 }
+.suggest {
+    margin-top: 1vh;
+    gap: 8px;
+    position: absolute;
+    z-index: 2;
+    border-radius: 12px;
+    background: var(--neutral-white, #fff);
+    box-shadow: 4px 8px 32px 0px rgba(0, 0, 0, 0.08);
+    top: 100%;
+    left: 5vw;
+    max-height: 180px;
+    overflow: auto;
+    width: 90%
+}
+
+.suggest-item:hover {
+    border-radius: 5px;
+    background-color: #065471;
+    color: white !important;
+}

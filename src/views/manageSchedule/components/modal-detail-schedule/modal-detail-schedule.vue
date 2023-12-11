@@ -12,50 +12,48 @@
                 <div class="d-flex flex-column " style="margin:16px; overflow-y: scroll;">
                     <div class="d-flex flex-row ">
                         <div class="movie-image d-flex justify-content-center" style="gap:32px; height: 450px; width: 30%;">
-                            <img id="movie-image-modal"
-                                src="https://cinestar.com.vn/pictures/Cinestar/11-2023/poster-nguoi-vo-cuoi-cung.jpg"
-                                alt="aaa">
+                            <img id="movie-image-modal" :src="scheduleInput.image" alt="aaa">
                         </div>
                         <div class="col d-flex flex-column" style="gap:16px; width: 70%; padding: 8px;">
                             <div class="row mb-3">
                                 <label for="inputAuthor" class="col-3 col-form-label">Movie:</label>
                                 <div class="col-9">
-                                    <input v-model="movieInput.publishingYear" type="text" class="form-control"
+                                    <input v-model="scheduleInput.movie" type="text" class="form-control"
                                         id="inputAuthor" />
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="inputAuthor" class="col-3 col-form-label">Start at:</label>
                                 <div class="col-9">
-                                    <input v-model="movieInput.publishingYear" type="text" class="form-control"
+                                    <input v-model="scheduleInput.startTime" type="text" class="form-control"
                                         id="inputAuthor" />
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="inputAuthor" class="col-3 col-form-label">End at:</label>
                                 <div class="col-9">
-                                    <input v-model="movieInput.publishingYear" type="text" class="form-control"
+                                    <input v-model="scheduleInput.endTime" type="text" class="form-control"
                                         id="inputAuthor" />
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="inputAuthor" class="col-3 col-form-label">Theatre:</label>
                                 <div class="col-9">
-                                    <input v-model="movieInput.publishingYear" type="text" class="form-control"
+                                    <input v-model="scheduleInput.theatre" type="text" class="form-control"
                                         id="inputAuthor" />
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="inputAuthor" class="col-3 col-form-label">Price:</label>
                                 <div class="col-9">
-                                    <input v-model="movieInput.publishingYear" type="text" class="form-control"
+                                    <input v-model="scheduleInput.price" type="text" class="form-control"
                                         id="inputAuthor" />
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="inputAuthor" class="col-3 col-form-label">Revenue:</label>
                                 <div class="col-9">
-                                    <input v-model="movieInput.publishingYear" type="text" class="form-control"
+                                    <input v-model="scheduleInput.total" type="text" class="form-control"
                                         id="inputAuthor" />
                                 </div>
                             </div>

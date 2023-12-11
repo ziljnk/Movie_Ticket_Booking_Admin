@@ -94,6 +94,34 @@ const actions = {
     }
   },
 
+  [MutationTypes.GET_ALL_SCHEDULES] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetNoToken("/api/Schedule", payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.GET_ALL_THEATRES] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetNoToken("/api/Theatre", payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
   [MutationTypes.CREATE_GENRE]: async (
     { commit }: { commit: any },
     payload: any
@@ -112,6 +140,18 @@ const actions = {
   ) => {
     payload = turnOnDevMode(payload);
     const response = await sendPostOnce("/api/Movie", payload);
+    if (response) {
+      return response;
+    } else {
+      return null;
+    }
+  },
+  [MutationTypes.CREATE_SCHEDULE]: async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce("/api/Schedule", payload);
     if (response) {
       return response;
     } else {
