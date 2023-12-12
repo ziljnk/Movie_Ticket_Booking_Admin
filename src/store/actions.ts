@@ -122,6 +122,20 @@ const actions = {
     }
   },
 
+  [MutationTypes.GET_ALL_VOUCHERS] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetNoToken("/api/Voucher", payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
   [MutationTypes.CREATE_GENRE]: async (
     { commit }: { commit: any },
     payload: any
@@ -170,6 +184,18 @@ const actions = {
       return null;
     }
   },
+  [MutationTypes.CREATE_VOUCHER]: async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce("/api/Voucher", payload);
+    if (response) {
+      return response;
+    } else {
+      return null;
+    }
+  },
   [MutationTypes.UPLOAD_IMAGE] : async (
     { commit }: { commit: any },
     payload: any
@@ -189,7 +215,7 @@ const actions = {
     payload = turnOnDevMode(payload);
     const movie_id = payload.movie_id
     let newPayload = { ...payload };
-    delete newPayload.expenses_id;
+    delete newPayload.movie_id;
     const response = await sendPutOnce(`/api/Movie/${movie_id}`, newPayload);
     if (response) {
       return response
@@ -205,7 +231,7 @@ const actions = {
     payload = turnOnDevMode(payload);
     const schedule_id = payload.schedule_id
     let newPayload = { ...payload };
-    delete newPayload.expenses_id;
+    delete newPayload.schedule_id;
     const response = await sendPutOnce(`/api/Schedule/${schedule_id}`, newPayload);
     if (response) {
       return response
@@ -220,8 +246,24 @@ const actions = {
     payload = turnOnDevMode(payload);
     const theatre_id = payload.theatre_id
     let newPayload = { ...payload };
-    delete newPayload.expenses_id;
+    delete newPayload.theatre_id;
     const response = await sendPutOnce(`/api/Theatre/${theatre_id}`, newPayload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.UPDATE_VOUCHER] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const voucher_id = payload.voucher_id
+    let newPayload = { ...payload };
+    delete newPayload.voucher_id;
+    const response = await sendPutOnce(`/api/Voucher/${voucher_id}`, newPayload);
     if (response) {
       return response
     } else {
@@ -310,12 +352,13 @@ const actions = {
       return null
     }
   },
-  [MutationTypes.SEARCH_THEATRE] : async (
+
+  [MutationTypes.SEARCH_VOUCHER] : async (
     { commit }: { commit: any },
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendGetNoToken("/api/Theatre/search", payload);
+    const response = await sendGetNoToken("/api/Voucher/search", payload);
 
     if (response) {
       return response
@@ -323,7 +366,6 @@ const actions = {
       return null
     }
   },
-
   [MutationTypes.CREATE_A_NEWS]: async (
     { commit }: { commit: any },
     payload: any

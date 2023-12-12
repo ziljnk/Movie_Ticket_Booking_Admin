@@ -63,7 +63,7 @@ export default class ModalDetailTheatre extends Vue {
   public handleHasChanged() {
     this.isChanged = false;
     if (
-      this.theatreInput.theatre !== this.theatre?.name ||
+      this.theatreInput.name !== this.theatre?.name ||
       this.theatreInput.description !== this.theatre?.description
     )
       this.isChanged = true;
@@ -71,11 +71,11 @@ export default class ModalDetailTheatre extends Vue {
   public async handleUpdate() {
     const payload = {
         theatre_id: this.theatre.id,
-        name: this.theatre.name,
-      description: this.theatre.description,
+        name: this.theatreInput.name,
+      description: this.theatreInput.description,
     };
     const res = await this.$store.dispatch(
-      MutationTypes.UPDATE_SCHEDULE,
+      MutationTypes.UPDATE_THEATRE,
       payload
     );
     if(res.status ===200){

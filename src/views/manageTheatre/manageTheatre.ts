@@ -27,7 +27,7 @@ export default class ManageTheatres extends Vue {
   public async fetchTheatres() {
     let res = await this.$store.dispatch(MutationTypes.GET_ALL_THEATRES, {
       page: this.currentPage,
-      pageSize: 5,
+      pageSize: 7,
     });
     this.theatres = res.data.data;
   }

@@ -15,44 +15,56 @@
                             <div class="input-field">
                                 <p class="text-start" style="height:30px; font-weight:600">Name:</p>
                                 <div class="d-flex flex-column" style="gap:4px">
-                                    <input class="input" v-model="movieInput.name" style="height:30px" type="text"
+                                    <input class="input" v-model="voucherInput.name" style="height:30px" type="text"
                                         placeholder="Enter voucher's name" />
                                 </div>
-                                
+
                             </div>
                             <div class="input-field">
                                 <p class="text-start" style="height:30px; font-weight:600">Code:</p>
                                 <div class="d-flex flex-column" style="gap:4px">
-                                    <input class="input" v-model="movieInput.name" style="height:30px" type="text"
-                                        placeholder="Enter voucher's code" />
+                                    <input class="input" v-model="voucherInput.code" style="height:30px" type="text"
+                                        disabled placeholder="Enter voucher's code" />
                                 </div>
-                                
+
                             </div>
                             <div class="input-field">
                                 <p class="text-start" style="height:30px; font-weight:600">Value:</p>
                                 <div class="d-flex flex-column" style="gap:4px">
-                                    <input class="input" v-model="movieInput.name" style="height:30px; width:50%" type="number"
-                                        placeholder="Enter voucher's value" />
+                                    <input class="input" v-model="voucherInput.value" style="height:30px; width:50%"
+                                        type="number" min="0" placeholder="Enter voucher's value" />
                                 </div>
-                                
+
                             </div>
                             <div class="input-field">
                                 <p class="text-start" style="height:30px; font-weight:600">Description:</p>
                                 <div class="d-flex flex-column" style="gap:4px">
-                                    <textarea class="text-field input" v-model="movieInput.actors"
+                                    <textarea class="text-field input" v-model="voucherInput.description"
                                         placeholder="Enter voucher's description"></textarea>
                                 </div>
                             </div>
+                            <div class="input-field">
+                                <p class="text-start" style="height:30px; font-weight:600">Active:</p>
+                                <div class="d-flex flex-column" style="gap:4px">
+                                    <select class="custom-select" v-model="voucherInput.isActive">
+                                        <option :value="true">True</option>
+                                        <option :value="false">False</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
 
                         </div>
-                    </div>  
+                    </div>
 
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" class="button-outline" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="button-solid">Add</button>
+                    <button type="button" class="button-solid" @click="handleUpdate">Save Change</button>
                 </div>
             </div>
         </div>
-</div></template>
+    </div>
+</template>
