@@ -3,40 +3,55 @@ import NavigationBar from '@/components/navigationBar/navigationBar.vue'
 import Header from '@/components/header/header.vue'
 import ModalAddVoucher from './components/modal-add-voucher/modal-add-voucher.vue';
 import ModalDetailVoucher from './components/modal-detail-voucher/modal-detail-voucher.vue';
+import { MutationTypes } from '@/store/mutation-types';
 @Options({
     components: {
         NavigationBar,
         Header,
         ModalAddVoucher,
         ModalDetailVoucher
+    },
+    watch: {
+        searchQuery: 'handleSearchQueryChange',
     }
 })
 export default class ManageVouchers extends Vue {
-    public date:any=null;
     public searchQuery:any=null;
     public currentPage:any=1;
     public totalPage:any=1;
-    public tickets:any=[
-        {
-            id: "655c2281b265c861941a773d",
-            name: "Voucher 1",
-            code: "VOUCHER1",
-            description: "Nhân dịp lễ quốc khánh, giảm giá vé xem phim sập sàn, trợ giá đến 30%",
-            value: 30
-        },
-        {
-            id: "655c2298b265c861941a773e",
-            name: "Voucher 2",
-            code: "VOUCHER2",
-            description: "voucher 2222",
-            value: 5
-        },
-        {
-            id: "655c22a4b265c861941a773f",
-            name: "Voucher 3",
-            code: "VOUCHER3",
-            description: "voucher 3333",
-            value: 10
-        }
-    ]
+    public vouchers:any=[]
+
+    async beforeMount() {
+        await this.fetchVouchers();
+      }
+    
+      public async fetchVouchers() {
+        let res = await this.$store.dispatch(MutationTypes.GET_ALL_VOUCHERS, {
+          page: this.currentPage,
+          pageSize: 7,
+        });
+        this.vouchers = res.data.data;
+      }
+    
+      public handleDetaiTheatre(item:any){
+        this.$store.commit("setVoucher", item);
+      }
+    
+      public handleSearchQueryChange(val: string, oldVal: string) {
+        if (val === '') {
+          this.fetchVouchers();
+      } else {
+          this.searchVoucher();
+      }
+    }
+      public async searchVoucher() {
+        let res = await this.$store.dispatch(MutationTypes.SEARCH_VOUCHER, {
+         code:this.searchQuery,
+         page: this.currentPage,
+         pageSize:7,
+        })
+    
+        this.totalPage = res.data.totalPages
+        this.vouchers = res.data.data
+      }
 }

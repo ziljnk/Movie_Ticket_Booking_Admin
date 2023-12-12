@@ -7,7 +7,8 @@ export default createStore({
     movie:null,
     schedule:null,
     chosenNews: null,
-    theatre: null
+    theatre: null,
+    voucher:null,
   },
   getters: {
   },
@@ -26,7 +27,10 @@ export default createStore({
     },
     setTheatre(state, payload) {
       state.theatre = payload;
-  }
+  },
+  setVoucher(state, payload) {
+    state.voucher = payload;
+}
   },
   actions: actions,
   modules: {

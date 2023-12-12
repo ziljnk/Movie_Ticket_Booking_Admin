@@ -39,7 +39,7 @@
                                         </div>
                                     </div>
                                     <div class="column-item" v-for="(item, index) in theatres" :key="index" @click="handleDetaiTheatre(item)" v-motion-slide-left>
-                                        <p class="col-3">
+                                        <p class="col-3" style="font-weight: bold;">
                                             {{ index + 1 }}
                                         </p>  
                                         <p class="col-2">

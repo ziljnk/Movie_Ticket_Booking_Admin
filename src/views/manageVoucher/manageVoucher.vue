@@ -44,8 +44,8 @@
                                             Description
                                         </div>
                                     </div>
-                                    <div class="column-item" v-for="(item, index) in tickets" :key="index" data-bs-toggle="modal" data-bs-target="#detailVoucher" v-motion-slide-left>
-                                        <p class="col-2">
+                                    <div class="column-item" v-for="(item, index) in vouchers" :key="index" data-bs-toggle="modal" data-bs-target="#detailVoucher" @click="handleDetaiTheatre(item)" v-motion-slide-left>
+                                        <p class="col-2" style="font-weight: bold;">
                                             {{ index + 1 }}
                                         </p>  
                                         <p class="col-2">
