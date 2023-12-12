@@ -32,7 +32,6 @@ export default class ManageSchedule extends Vue {
     });
 
     this.allSchedules = res.data.data;
-    console.log(this.allSchedules)
   }
   public handleDetaiSchedule(item:any){
     (this.$refs['detailSchedule'] as any).openModal()

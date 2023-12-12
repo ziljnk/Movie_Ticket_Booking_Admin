@@ -4,7 +4,7 @@
 
 <template>
     <ModalAddTheatre id="addTheatre" />
-    <ModalDetailTheatre id="detailTheatre" />
+    <ModalDetailTheatre ref="detailTheatre" id="detailTheatre" />
     <div class="manageTheatre-container">
         <div class="background-feature d-flex flex-column">
             <Header />
@@ -38,7 +38,7 @@
                                             Description
                                         </div>
                                     </div>
-                                    <div class="column-item" v-for="(item, index) in theatres" :key="index" data-bs-toggle="modal" data-bs-target="#detailTheatre" v-motion-slide-left>
+                                    <div class="column-item" v-for="(item, index) in theatres" :key="index" @click="handleDetaiTheatre(item)" v-motion-slide-left>
                                         <p class="col-3">
                                             {{ index + 1 }}
                                         </p>  

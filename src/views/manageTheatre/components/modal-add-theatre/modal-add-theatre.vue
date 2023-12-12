@@ -15,7 +15,7 @@
                             <div class="input-field">
                                 <p class="text-start" style="height:30px; font-weight:600">Name:</p>
                                 <div class="d-flex flex-column" style="gap:4px">
-                                    <input class="input" v-model="movieInput.name" style="height:30px" type="text"
+                                    <input class="input" v-model="theatreInput.name" style="height:30px" type="text"
                                         placeholder="Enter genre's name" />
                                 </div>
                                 
@@ -23,7 +23,7 @@
                             <div class="input-field">
                                 <p class="text-start" style="height:30px; font-weight:600">Description:</p>
                                 <div class="d-flex flex-column" style="gap:4px">
-                                    <textarea class="text-field input" v-model="movieInput.actors"
+                                    <textarea class="text-field input" v-model="theatreInput.description"
                                         placeholder="Enter theatre's description"></textarea>
                                 </div>
                             </div>
@@ -35,7 +35,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="button-outline" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="button-solid">Add</button>
+                    <button type="button" class="button-solid" @click="handleClickActionButton">Add</button>
                 </div>
             </div>
         </div>

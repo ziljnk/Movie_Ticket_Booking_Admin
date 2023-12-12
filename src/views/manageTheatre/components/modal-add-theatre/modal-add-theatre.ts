@@ -8,39 +8,30 @@ import { toast } from "vue3-toastify";
 })
 
 export default class ModalAddTheatre extends Vue {
-    public isShowModalCategories: any = false
 
-    public movieInput:any={
+    public theatreInput:any={
         name: null,
-        studio: null,
-        publishDate: null,
-        endDate: null,
-        genre: null,
-        type: null,
-        actors: null,
-        director: null,
         description: null,
-        image: null,
-        trailer: null,
-        duration: null,
-        profit:0,
     }
-    public async mounted(){
-
-    }
-    public genre:any=[
-        {
-            id: "654cadf4a705d39ceebe76a9",
-            name: "Horror"
-        },
-        {
-            id: "6552e20b216db62ca800c4e1",
-            name: "Comedy"
+    public async handleClickActionButton() {
+        const payload = { 
+            name: this.theatreInput.name,
+            description: this.theatreInput.description,
+        };
+        const res = await this.$store.dispatch(
+        MutationTypes.CREATE_THEATRE,
+        payload
+        );
+        if(res.status ===201){
+            toast.success('Theatre created successfully!');
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
         }
-    ]
-    public selectedGenres: any=[]
-    public toggleModalCategories(event: any) {
-        this.isShowModalCategories = !this.isShowModalCategories
+        else{
+            toast.error(res.data);
+        }
     }
+
 
 }

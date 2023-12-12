@@ -146,6 +146,18 @@ const actions = {
       return null;
     }
   },
+  [MutationTypes.CREATE_THEATRE]: async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce("/api/Theatre", payload);
+    if (response) {
+      return response;
+    } else {
+      return null;
+    }
+  },
   [MutationTypes.CREATE_SCHEDULE]: async (
     { commit }: { commit: any },
     payload: any
@@ -201,6 +213,21 @@ const actions = {
       return null
     }
   },
+  [MutationTypes.UPDATE_THEATRE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const theatre_id = payload.theatre_id
+    let newPayload = { ...payload };
+    delete newPayload.expenses_id;
+    const response = await sendPutOnce(`/api/Theatre/${theatre_id}`, newPayload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
 
   [MutationTypes.DELETE_A_MOVIE] : async (
     { commit }: { commit: any },
@@ -215,12 +242,27 @@ const actions = {
       return null
     }
   },
+
   [MutationTypes.DELETE_A_SCHEDULE] : async (
     { commit }: { commit: any },
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
     const response = await sendDeleteOnce(`/api/Schedule/${payload.scheduleId}`, payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.DELETE_THEATRE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendDeleteOnce(`/api/Theatre/${payload.theatreId}`, payload);
 
     if (response) {
       return response
@@ -261,6 +303,19 @@ const actions = {
   ) => {
     payload = turnOnDevMode(payload);
     const response = await sendGetNoToken("/api/Schedule/search", payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+  [MutationTypes.SEARCH_THEATRE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetNoToken("/api/Theatre/search", payload);
 
     if (response) {
       return response

@@ -23,13 +23,13 @@ export default class ModalAddGenre extends Vue {
             payload
             );
             if(res.status ===201){
-                toast.success(res.data);
+                toast.success('Genre created successfully!');
                 setTimeout(() => {
                     window.location.reload();
                 }, 2000);
             }
             else{
-                toast.success(res.data);
+                toast.error(res.data);
             }
         }
 

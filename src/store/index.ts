@@ -6,7 +6,8 @@ export default createStore({
     userData:null,
     movie:null,
     schedule:null,
-    chosenNews: null
+    chosenNews: null,
+    theatre: null
   },
   getters: {
   },
@@ -22,7 +23,10 @@ export default createStore({
     },
     setChosenNews(state, payload) {
         state.chosenNews = payload;
-    }
+    },
+    setTheatre(state, payload) {
+      state.theatre = payload;
+  }
   },
   actions: actions,
   modules: {

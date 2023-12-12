@@ -1,46 +1,110 @@
 import { Vue, Options } from "vue-class-component";
 import { MutationTypes } from "@/store/mutation-types";
 import { toast } from "vue3-toastify";
-@Options({
-    props: {
+import { Modal } from "bootstrap";
+import FormattedModal from "@/components/modal/modal.vue";
 
-    },
+@Options({
+    watch: {
+        scheduleInput: {
+          handler(val, oldVal) {
+            this.handleHasChanged();
+          },
+          deep: true,
+        },
+      },
+      components: {
+        FormattedModal
+    }
 })
 
 export default class ModalDetailTheatre extends Vue {
-    public isShowModalCategories: any = false
-
-    public movieInput:any={
+    public theatreInput:any={
         name: null,
-        studio: null,
-        publishDate: null,
-        endDate: null,
-        genre: null,
-        type: null,
-        actors: null,
-        director: null,
         description: null,
-        image: null,
-        trailer: null,
-        duration: null,
-        profit:0,
     }
-    public async mounted(){
 
-    }
-    public genre:any=[
-        {
-            id: "654cadf4a705d39ceebe76a9",
-            name: "Horror"
-        },
-        {
-            id: "6552e20b216db62ca800c4e1",
-            name: "Comedy"
+    public isChanged: any = false;
+    public theatre: any = null;
+    public unsubscribe!: any;
+
+  public async mounted() {
+    this.handleSubscribe();
+  }
+
+  public unmounted() {
+    this.unsubscribe();
+  }
+
+  public handleSubscribe() {
+    this.unsubscribe = this.$store.subscribe(
+      async (mutation: any, state: any) => {
+        if (mutation.type === "setTheatre") {
+          this.theatre = mutation.payload;
+          this.getData();
         }
-    ]
-    public selectedGenres: any=[]
-    public toggleModalCategories(event: any) {
-        this.isShowModalCategories = !this.isShowModalCategories
+      }
+    );
+  }
+  public getData() {
+    this.theatreInput = {
+        name: this.theatre?.name,
+        description: this.theatre?.description
+    };
+  }
+
+
+  public async openModal() {
+    const myModal = new Modal(this.$refs["modal-detail-theatre"] as any);
+    myModal.show();
+  }
+
+
+  public handleHasChanged() {
+    this.isChanged = false;
+    if (
+      this.theatreInput.theatre !== this.theatre?.name ||
+      this.theatreInput.description !== this.theatre?.description
+    )
+      this.isChanged = true;
+  }
+  public async handleUpdate() {
+    const payload = {
+        theatre_id: this.theatre.id,
+        name: this.theatre.name,
+      description: this.theatre.description,
+    };
+    const res = await this.$store.dispatch(
+      MutationTypes.UPDATE_SCHEDULE,
+      payload
+    );
+    if(res.status ===200){
+        toast.success('Successfully updated');
+        setTimeout(() => {
+          window.location.reload();
+      }, 2000);
     }
+    else{
+      toast.error(res.data);
+    }
+}
+public handleOpenModalDeleteSchedule() {
+  (this.$refs['modal-delete-theatre-component'] as any).openModal()
+}
+
+public async handleDeleteSchedule() {
+      let res = await this.$store.dispatch(MutationTypes.DELETE_THEATRE, {
+          theatreId: this.theatre.id
+      })
+      if (res.status === 200) {
+          toast.success("Delete successfully!")
+          setTimeout(() => {
+              window.location.reload();
+          }, 2000);
+      } else {
+          toast.error(res.data)
+      }
+  }
+  
 
 }
