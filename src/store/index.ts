@@ -1,17 +1,17 @@
-import { createStore } from 'vuex'
+import { createStore } from "vuex";
 import actions from "./actions";
 
 export default createStore({
   state: {
-    userData:null,
-    movie:null,
-    schedule:null,
+    userData: null,
+    movie: null,
+    schedule: null,
     chosenNews: null,
     theatre: null,
-    voucher:null,
+    voucher: null,
+    ticket: null,
   },
-  getters: {
-  },
+  getters: {},
   mutations: {
     setUserData(state, payload) {
       state.userData = payload;
@@ -23,16 +23,18 @@ export default createStore({
       state.schedule = payload;
     },
     setChosenNews(state, payload) {
-        state.chosenNews = payload;
+      state.chosenNews = payload;
     },
     setTheatre(state, payload) {
       state.theatre = payload;
-  },
-  setVoucher(state, payload) {
-    state.voucher = payload;
-}
+    },
+    setVoucher(state, payload) {
+      state.voucher = payload;
+    },
+    setTicket(state, payload) {
+      state.ticket = payload;
+    },
   },
   actions: actions,
-  modules: {
-  }
-})
+  modules: {},
+});

@@ -55,6 +55,7 @@ export default class ModalDetailSchedule extends Vue {
         if (mutation.type === "setSchedule") {
           this.schedule = mutation.payload;
           this.getData();
+          this.tranfer();
         }
       }
     );
@@ -156,5 +157,8 @@ public async handleDeleteSchedule() {
       toast.error("Can not delete movie have profit")
   }
   
+}
+public tranfer() {
+  this.scheduleInput.total=`${this.scheduleInput.total}$`
 }
 }

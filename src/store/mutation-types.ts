@@ -7,11 +7,13 @@ export class MutationTypes {
     public static GET_ALL_SCHEDULES = 'GET_ALL_SCHEDULES';
     public static GET_ALL_THEATRES = 'GET_ALL_THEATRES';
     public static GET_ALL_VOUCHERS = 'GET_ALL_VOUCHERS';
+    public static GET_ALL_TICKETS = 'GET_ALL_TICKETS';
     public static SEARCH_GENRE = 'SEARCH_GENRE';
     public static SEARCH_MOVIE = 'SEARCH_MOVIE';
     public static SEARCH_SCHEDULE = 'SEARCH_SCHEDULE';
     public static SEARCH_THEATRE = 'SEARCH_THEATRE';
     public static SEARCH_VOUCHER = 'SEARCH_VOUCHER';
+    public static SEARCH_TICKET = 'SEARCH_TICKET';
     public static UPLOAD_IMAGE = 'UPLOAD_IMAGE';
     public static CREATE_GENRE = 'CREATE_GENRE';
     public static CREATE_MOVIE = 'CREATE_MOVIE';

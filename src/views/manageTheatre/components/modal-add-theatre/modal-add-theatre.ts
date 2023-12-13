@@ -13,11 +13,14 @@ export default class ModalAddTheatre extends Vue {
         name: null,
         description: null,
     }
+    
     public async handleClickActionButton() {
         const payload = { 
             name: this.theatreInput.name,
             description: this.theatreInput.description,
         };
+        toast.loading('Wait to create seat!');
+
         const res = await this.$store.dispatch(
         MutationTypes.CREATE_THEATRE,
         payload

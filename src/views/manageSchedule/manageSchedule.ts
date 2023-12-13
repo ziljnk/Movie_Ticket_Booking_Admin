@@ -31,6 +31,8 @@ export default class ManageSchedule extends Vue {
       pageSize: 5,
     });
 
+    this.totalPage = res.data.totalPages;
+
     this.allSchedules = res.data.data;
   }
   public handleDetaiSchedule(item:any){
@@ -53,5 +55,10 @@ export default class ManageSchedule extends Vue {
 
     this.totalPage = res.data.totalPages
     this.allSchedules = res.data.data
+  }
+
+  public handleNextPage(index:any){
+        this.currentPage= index+1;
+        this.fetchSchedules()
   }
 }

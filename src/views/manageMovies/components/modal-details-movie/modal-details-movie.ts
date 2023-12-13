@@ -56,6 +56,7 @@ export default class ModalDetailsMovie extends Vue {
         if (mutation.type === "setMovie") {
           this.movie = mutation.payload;
           this.getData();
+          this.tranfer();
         }
       }
     );
@@ -168,5 +169,9 @@ export default class ModalDetailsMovie extends Vue {
             toast.error("Can not delete movie have profit")
         }
         
+    }
+
+    public tranfer() {
+      this.movieInput.profit=`${this.movieInput.profit}$`
     }
 }
