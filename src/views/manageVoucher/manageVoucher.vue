@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="count-page">
                                     <div :class="[currentPage === index + 1 ? 'current-page-number' : '', 'page-number']"
-                                        v-for="(item, index) in totalPage" :key="index">
+                                        v-for="(item, index) in totalPage" :key="index" @click="handleNextPage(index)">
                                         <p>{{ index + 1 }}</p>
                                     </div>
                                 </div>

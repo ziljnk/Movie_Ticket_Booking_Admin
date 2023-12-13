@@ -28,7 +28,7 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="inputAuthor" class="col-3 col-form-label">Movie:</label>
+                                <label for="inputAuthor" class="col-3 col-form-label">Duration:</label>
                                 <div class="col-2">
                                     <input v-model="scheduleInput.duration" type="text" class="form-control" id="inputAuthor"
                                         disabled />
@@ -73,7 +73,7 @@
                             <div class="row mb-3">
                                 <label for="inputAuthor" class="col-3 col-form-label">Revenue:</label>
                                 <div class="col-3">
-                                    <input v-model="scheduleInput.total" type="number" class="form-control" disabled
+                                    <input v-model="scheduleInput.total" type="text" class="form-control" disabled
                                         id="inputAuthor" />
                                 </div>
                             </div>

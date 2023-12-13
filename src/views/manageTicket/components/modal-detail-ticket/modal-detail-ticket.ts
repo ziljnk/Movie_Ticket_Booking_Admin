@@ -8,39 +8,70 @@ import { toast } from "vue3-toastify";
 })
 
 export default class ModalDetailTicket extends Vue {
-    public isShowModalCategories: any = false
-
-    public movieInput:any={
-        name: null,
-        studio: null,
-        publishDate: null,
-        endDate: null,
-        genre: null,
-        type: null,
-        actors: null,
-        director: null,
-        description: null,
-        image: null,
-        trailer: null,
-        duration: null,
-        profit:0,
+    public ticketInput:any={
+        id: null,
+        movie:null,
+        image:null,
+        theatre:null,
+        date:null,
+        time:null,
+        price: 0,
+        seat:null,
+        voucher:null,
+        code:null,
+        createdAt:null,
     }
-    public async mounted(){
+    public ticket: any = null;
+    public unsubscribe!: any;
 
-    }
-    public genre:any=[
-        {
-            id: "654cadf4a705d39ceebe76a9",
-            name: "Horror"
-        },
-        {
-            id: "6552e20b216db62ca800c4e1",
-            name: "Comedy"
+  public async mounted() {
+    this.handleSubscribe();
+  }
+
+  public unmounted() {
+    this.unsubscribe();
+  }
+
+  public handleSubscribe() {
+    this.unsubscribe = this.$store.subscribe(
+      async (mutation: any, state: any) => {
+        if (mutation.type === "setTicket") {
+          this.ticket = mutation.payload;
+          this.getData();
+          this.tranfer();
         }
-    ]
-    public selectedGenres: any=[]
-    public toggleModalCategories(event: any) {
-        this.isShowModalCategories = !this.isShowModalCategories
+      }
+    );
+  }
+  public getData() {
+    this.ticketInput = {
+        id: this.ticket?.id,
+        image: this.ticket?.schedule?.movie?.image,
+        movie: this.ticket?.schedule?.movie?.name,
+        theatre: this.ticket?.schedule?.theatre?.name,
+        price: this.ticket?.schedule?.price,
+        date: this.ticket?.schedule?.startTime.slice(0,10),
+        time: this.ticket?.schedule?.startTime.slice(11,16),
+        seat:  this.ticket?.seat?.row + this.ticket?.seat?.number,
+        voucher: this.ticket?.voucher?.value  || null,
+        code: this.ticket?.voucher?.code  || null,
+        createdAt: this.ticket?.createdAt.slice(0,10),
+    };
+    console.log(this.ticketInput)
+  }
+  
+  public tranfer() {
+    if( this.ticketInput.voucher === null){
+        this.ticketInput.voucher = '0%'
+        this.ticketInput.code = 'Empty'
     }
+    else{
+        this.ticketInput.voucher = `${this.ticketInput.voucher}%`
+    }
+    this.ticketInput.price=`${this.ticketInput.price}$`
+  }
+
+
+  
 
 }

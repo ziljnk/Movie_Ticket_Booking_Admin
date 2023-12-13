@@ -29,6 +29,8 @@ export default class ManageTheatres extends Vue {
       page: this.currentPage,
       pageSize: 7,
     });
+    this.totalPage = res.data.totalPages;
+
     this.theatres = res.data.data;
   }
 
@@ -54,4 +56,8 @@ export default class ManageTheatres extends Vue {
     this.totalPage = res.data.totalPages
     this.theatres = res.data.data
   }
+  public handleNextPage(index:any){
+    this.currentPage= index+1;
+    this.fetchTheatres()
+}
 }

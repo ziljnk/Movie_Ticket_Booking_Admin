@@ -107,7 +107,7 @@
                         <div class="row mb-3">
                             <label for="inputAuthor" class="col-3 col-form-label">Profit:</label>
                             <div class="col-4">
-                                <input v-model="movieInput.profit" type="number" class="form-control" id="inputAuthor"
+                                <input v-model="movieInput.profit" type="text" class="form-control" id="inputAuthor"
                                     disabled />
                             </div>
                         </div>

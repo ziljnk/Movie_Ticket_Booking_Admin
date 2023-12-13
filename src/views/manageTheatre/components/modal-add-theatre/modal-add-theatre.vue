@@ -16,7 +16,7 @@
                                 <p class="text-start" style="height:30px; font-weight:600">Name:</p>
                                 <div class="d-flex flex-column" style="gap:4px">
                                     <input class="input" v-model="theatreInput.name" style="height:30px" type="text"
-                                        placeholder="Enter genre's name" />
+                                        placeholder="Enter theatre's name" />
                                 </div>
                                 
                             </div>

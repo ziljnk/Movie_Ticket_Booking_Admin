@@ -136,6 +136,20 @@ const actions = {
     }
   },
 
+  [MutationTypes.GET_ALL_TICKETS] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetNoToken("/api/Ticket", payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
   [MutationTypes.CREATE_GENRE]: async (
     { commit }: { commit: any },
     payload: any
@@ -366,6 +380,21 @@ const actions = {
       return null
     }
   },
+
+  [MutationTypes.SEARCH_TICKET] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetNoToken(`/api/Ticket/${payload.ticketId}`, payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
   [MutationTypes.CREATE_A_NEWS]: async (
     { commit }: { commit: any },
     payload: any
@@ -391,6 +420,8 @@ const actions = {
       return null;
     }
   },
+
+  
 
   [MutationTypes.UPDATE_NEWS]: async (
     { commit }: { commit: any },
