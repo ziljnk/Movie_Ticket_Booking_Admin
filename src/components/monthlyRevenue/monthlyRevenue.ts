@@ -12,7 +12,7 @@ export default class MonthlyRevenue extends Vue {
   mounted() {
       console.log('Component mounted.')
 
-      const ctx = document.getElementById('myChart');
+      const ctx: any = document.getElementById('myChart');
     
       const myChart = new Chart(ctx, {
         type: 'line',

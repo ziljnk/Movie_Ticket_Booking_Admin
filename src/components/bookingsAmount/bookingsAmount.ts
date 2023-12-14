@@ -11,7 +11,7 @@ export default class BookingsAmount extends Vue {
     mounted() {
         console.log('Component mounted.')
   
-        const ctx = document.getElementById('myChart');
+        const ctx: any = document.getElementById('myChart');
 
         const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov','Dec'];
         const data = {
