@@ -8,6 +8,7 @@
             <Header />
             <div class="d-flex flex-row" style="height: calc( 100vh - 66px)">
                 <NavigationBar class="col-2" />
+
                 <div>
                     <div class="container overflow-hidden text-center">
                         <div class="row gx-5">
@@ -32,8 +33,8 @@
 
                 </div>
                 
+
             </div>
         </div>
-
     </div>
 </template>

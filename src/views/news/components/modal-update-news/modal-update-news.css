@@ -1,0 +1,38 @@
+.modal-header, .modal-footer {
+    border: none;
+}
+
+.modal-content {
+    border-radius: 24px;
+    max-height: 700px;
+    min-width: 600px;
+    overflow-y: scroll;
+}
+
+#news-image-input-label {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    border: 2px solid #E5E5E5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+#chosen-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+#news-image-input-label:hover {
+    background-color: #e5e5e5;
+
+}
+
+#news-image-input-label i {
+    font-size: 30px;
+}

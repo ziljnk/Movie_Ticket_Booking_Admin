@@ -21,6 +21,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import { MotionPlugin } from "@vueuse/motion";
 import "../node_modules/vue3-emoji-picker/dist/style.css";
+import { QuillEditor } from '@vueup/vue-quill'
+import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
 createApp(App)
   .use(store)
@@ -34,5 +36,7 @@ createApp(App)
   .use(VueSplide)
   .use(VueApexCharts)
   .use(MotionPlugin)
+
+  .component('QuillEditor', QuillEditor)
   .mount("#app");
-  
+

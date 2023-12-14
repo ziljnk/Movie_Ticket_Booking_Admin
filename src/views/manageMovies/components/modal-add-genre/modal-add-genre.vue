@@ -11,12 +11,15 @@
                 </div>
                 <div class="d-flex flex-column" style="margin:16px;">
                     <div class="d-flex flex-row" style="gap:32px; margin:16px;">
-                        <div class="col d-flex flex-column" style="gap:16px">
+                        <div class="col d-flex flex-column" style="gap:16px;">
                             <div class="input-field">
                                 <p class="text-start" style="height:30px; font-weight:600">Name:</p>
                                 <div class="d-flex flex-column" style="gap:4px">
-                                    <input class="input" v-model="movieInput.name" style="height:30px" type="text"
-                                        placeholder="Enter genre's name" />
+                                    <input class="input" v-model="genreName" style="height:30px" type="text" 
+                                        placeholder="Enter genre's name"  />
+                                    <div v-if="invalidMessage.name" class="text-start">
+                                    <p class="text-error">{{ invalidMessage.name }}</p>
+                                </div>
                                 </div>
                             </div>
 
@@ -27,7 +30,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="button-outline" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="button-solid">Add</button>
+                    <button type="button" class="button-solid" @click="handleClickActionButton()">Add</button>
                 </div>
             </div>
         </div>

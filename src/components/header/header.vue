@@ -15,7 +15,7 @@
                 font-size: 14px;
                 font-style: normal;
             ">
-                {{ userData }}
+                {{ userData?.account }}
             </p>
         </div>
         <router-link to="/login" v-else> 

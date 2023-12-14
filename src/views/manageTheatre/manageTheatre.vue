@@ -4,7 +4,7 @@
 
 <template>
     <ModalAddTheatre id="addTheatre" />
-    <ModalDetailTheatre id="detailTheatre" />
+    <ModalDetailTheatre ref="detailTheatre" id="detailTheatre" />
     <div class="manageTheatre-container">
         <div class="background-feature d-flex flex-column">
             <Header />
@@ -38,8 +38,8 @@
                                             Description
                                         </div>
                                     </div>
-                                    <div class="column-item" v-for="(item, index) in theatres" :key="index" data-bs-toggle="modal" data-bs-target="#detailTheatre" v-motion-slide-left>
-                                        <p class="col-3">
+                                    <div class="column-item" v-for="(item, index) in theatres" :key="index" @click="handleDetaiTheatre(item)" v-motion-slide-left>
+                                        <p class="col-3" style="font-weight: bold;">
                                             {{ index + 1 }}
                                         </p>  
                                         <p class="col-2">
@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="count-page">
                                     <div :class="[currentPage === index + 1 ? 'current-page-number' : '', 'page-number']"
-                                        v-for="(item, index) in totalPage" :key="index">
+                                        v-for="(item, index) in totalPage" :key="index" @click="handleNextPage(index)">
                                         <p>{{ index + 1 }}</p>
                                     </div>
                                 </div>

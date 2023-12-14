@@ -26,9 +26,9 @@
                                         <p>Select movie's genre</p>
                                         <i class="bi bi-chevron-down"></i>
 
-                                        <div v-if="isShowModalCategories" class="genre-modal" v-motion-slide-top
-                                            @click.stop>
-                                            <div v-for="(item, index) in genre" :key="index" class="genre-item-container">
+                                        <div v-if="isShowModalGenres" class="genre-modal" v-motion-slide-top @click.stop>
+                                            <div v-for="(item, index) in allGenres" :key="index"
+                                                class="genre-item-container">
                                                 <label :for="`genre-${index}`">{{ item.name }}</label>
                                                 <input v-model="movieInput.genre" type="checkbox" :id="`genre-${index}`"
                                                     :value="item.id" />
@@ -90,7 +90,7 @@
                                         placeholder="Enter movie's duration" />
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
 
@@ -114,8 +114,10 @@
                                 <p class="text-start" style="height:30px; font-weight:600">Image:</p>
                                 <div class="d-flex flex-column" style="gap:4px">
                                     <div class="report-items-image" style="margin-top: 8px;">
-                                        <label class="custom-file-upload card-image" >
-                                            <input type="file" multiple accept=".png, .jpg, .jpeg"/>
+                                        <img v-if="fileInput1.length > 0" class="imgReport"
+                                            v-for="(item, index) in fileInput1" :key="index" :src="item" />
+                                        <label class="custom-file-upload card-image">
+                                            <input type="file" accept=".png, .jpg, .jpeg" @change="onFileSelected" />
                                             <i class="bi bi-plus d-flex justify-content-center" style="font-size:24px"></i>
                                         </label>
                                     </div>
@@ -131,8 +133,9 @@
 
                 <div class="modal-footer">
                     <button type="button" class="button-outline" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="button-solid">Add</button>
+                    <button type="button" class="button-solid" @click="handleClickBtn()">Add</button>
                 </div>
             </div>
         </div>
-</div></template>
+    </div>
+</template>
