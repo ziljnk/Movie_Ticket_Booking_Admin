@@ -8,13 +8,32 @@
             <Header />
             <div class="d-flex flex-row" style="height: calc( 100vh - 66px)">
                 <NavigationBar class="col-2" />
-                Dashboard
-                <button @click="fetchUsers" class="btn-logout">Fetch users</button>
-                <div v-if="userList.length > 0" v-for="(item, index) in userList" :key="index">
-                    <p>id: {{ item.id }}</p>
-                    <p>account: {{ item.account }}</p>
-                    <p>password: {{ item.password }}</p>
+
+                <div>
+                    <div class="container overflow-hidden text-center">
+                        <div class="row gx-5">
+                            <div class="col">
+                                <div class="p-3"><statistic-card/></div>
+                            </div>
+                            <div class="col">
+                                <div class="p-3"><statistic-card/></div>
+                            </div>
+                            <div class="col">
+                                <div class="p-3"><statistic-card/></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <monthly-revenue/>
+                    </div>
+                    <div style="display: flex;">
+                        <bookings-amount/>
+                        <pie-chart/>
+                    </div>
+
                 </div>
+                
+
             </div>
         </div>
     </div>

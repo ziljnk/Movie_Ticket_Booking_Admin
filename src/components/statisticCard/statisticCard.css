@@ -1,0 +1,49 @@
+.statisticCard-container {
+    background-color: white;
+    border-radius: 20px;
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 53px;
+    flex-grow: 1;
+}
+
+.title {
+    margin-bottom: 0;
+    padding-right: 100px;
+    font-weight: semi-bold;
+    font-size: 14px;
+}
+
+.value {
+    margin-bottom: 0;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.value-container {
+    display: flex;
+    justify-content: space-between; /* Các phần tử con sẽ được căn giữa và căn cách nhau */
+    align-items: center;
+    margin-top: 7px;
+}
+
+.percent-container {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 11px;
+    margin: 10px;
+}
+
+.percent {
+    margin-bottom: 0;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.chart-title {
+    font-weight: 600;
+    font-size: 17px;
+    color: #0E132F;
+    margin-bottom: 40px;
+}
+

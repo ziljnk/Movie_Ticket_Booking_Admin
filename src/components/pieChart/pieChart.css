@@ -1,0 +1,23 @@
+.pie-chart-card {
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: 25px;
+    margin-right: 25px;
+    width: 380px;
+    height: 230px;
+  }
+  
+  .chart-title {
+    font-size: 14px;
+    font-weight: semi-bold;
+    margin-bottom: 10px;
+  }
+  
+  .between-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
