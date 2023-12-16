@@ -30,4 +30,10 @@ export class MutationTypes {
     public static CREATE_A_NEWS = 'CREATE_A_NEWS';
     public static GET_ALL_NEWS = 'GET_ALL_NEWS';
     public static UPDATE_NEWS = 'UPDATE_NEWS';
+    public static GET_MOVIES_PER_MONTH = 'GET_MOVIES_PER_MONTH';
+    public static GET_MOVIES_PROFIT = 'GET_MOVIES_PROFIT';
+    public static GET_TOP_10_MOVIES = 'GET_TOP_10_MOVIES';
+    public static GET_QUANTITY_MOVIES = 'GET_QUANTITY_MOVIES';
+    public static GET_QUANTITY_TICKETS = 'GET_QUANTITY_TICKETS';
+    public static GET_QUANTITY_THEATRES = 'GET_QUANTITY_THEATRES';
 }

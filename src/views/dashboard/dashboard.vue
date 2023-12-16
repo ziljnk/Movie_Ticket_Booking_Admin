@@ -6,34 +6,24 @@
     <div class="dashboard-container">
         <div class="background-feature d-flex flex-column">
             <Header />
-            <div class="d-flex flex-row" style="height: calc( 100vh - 66px)">
+            <div class="d-flex flex-row gap-5" style="height: calc( 100vh - 66px); overflow: scroll;">
                 <NavigationBar class="col-2" />
 
-                <div>
-                    <div class="container overflow-hidden text-center">
-                        <div class="row gx-5">
-                            <div class="col">
-                                <div class="p-3"><statistic-card/></div>
-                            </div>
-                            <div class="col">
-                                <div class="p-3"><statistic-card/></div>
-                            </div>
-                            <div class="col">
-                                <div class="p-3"><statistic-card/></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <monthly-revenue/>
-                    </div>
-                    <div style="display: flex;">
-                        <bookings-amount/>
-                        <pie-chart/>
+                <div class="d-flex flex-column px-3 mt-3">
+                    <div class="d-flex flex-row justify-content-start align-items-center gap-3">
+                        <StatisticCard v-for="(item, index) in statisticCardData" :key="index" :title="item.title" :value="item.value" :percent="item.percent"/>
                     </div>
 
+                    <div class="mt-4 d-flex align-items-center gap-4">
+                        <BarChart />
+                        <DoughnutChart/>
+                    </div>
+
+                    <div class="d-flex flex-column justify-content-start align-items-start mt-3 top-10-movies">
+                        <h3>Top 10 Movies With Highest Profit</h3>
+                        <TopMovieItem v-for="(item, index) in top10Movies" :key="index" :movieData="item"/>
+                    </div>
                 </div>
-                
-
             </div>
         </div>
     </div>

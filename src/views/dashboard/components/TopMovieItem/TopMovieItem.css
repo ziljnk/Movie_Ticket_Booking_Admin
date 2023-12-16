@@ -1,0 +1,31 @@
+.movie-item-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    height: 150px;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+    width: 100%;
+    border-radius: 4px;
+    gap: 10px;
+}
+
+.movie-item-container img {
+    height: 100%;
+}
+
+.movie-item-container table {
+    height: 100%;
+}
+
+.value {
+    font-weight: normal;
+    font-size: 10px;
+    text-align: start;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 12px;
+    text-align: start;
+}

@@ -3,7 +3,7 @@
 <script lang="ts" src="./navigationBar.ts"></script>
 
 <template>
-    <div class="d-flex flex-column justify-content-between" style="padding:24px; background-color: #fcf7f2; border-right: solid 1px #E5E6E6; height: calc( 100vh - 66px);">
+    <div class="d-flex flex-column justify-content-between" style="padding:24px; background-color: #fcf7f2; border-right: solid 1px #E5E6E6; height: calc( 100vh - 66px); position:sticky; top: 0">
         <div class="d-flex flex-column align-items-start" style="gap:4px; margin-top: 8px;">
             <p class="big-title">Basic tools</p>
             <div :class="[ pageName==='/' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/')">

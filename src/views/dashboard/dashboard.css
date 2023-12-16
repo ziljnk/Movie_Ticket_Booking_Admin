@@ -4,3 +4,9 @@
     margin-top: 10px;
     gap: 3.5%;
 }
+
+.top-10-movies {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+}

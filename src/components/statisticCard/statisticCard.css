@@ -1,20 +1,20 @@
 .statisticCard-container {
     background-color: white;
     border-radius: 20px;
-    padding-top: 20px;
-    padding-left: 30px;
-    padding-right: 53px;
-    flex-grow: 1;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
 }
 
-.title {
+.title-statistic {
     margin-bottom: 0;
     padding-right: 100px;
     font-weight: semi-bold;
     font-size: 14px;
 }
 
-.value {
+.value-statistic {
     margin-bottom: 0;
     font-weight: bold;
     font-size: 30px;
@@ -47,3 +47,10 @@
     margin-bottom: 40px;
 }
 
+.text-green {
+    color: #006811;
+}
+
+.text-red {
+    color: #FF0000;
+}
