@@ -9,8 +9,8 @@
             <div class="d-flex flex-row gap-5" style="height: calc( 100vh - 66px); overflow: scroll;">
                 <NavigationBar class="col-2" />
 
-                <div class="d-flex flex-column px-3 mt-3">
-                    <div class="d-flex flex-row justify-content-start align-items-center gap-3">
+                <div class="d-flex flex-column px-3 mt-3 w-100">
+                    <div class="d-flex flex-row justify-content-start align-items-center gap-5">
                         <StatisticCard v-for="(item, index) in statisticCardData" :key="index" :title="item.title" :value="item.value" :percent="item.percent"/>
                     </div>
 

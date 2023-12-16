@@ -11,7 +11,7 @@
             </tr>
             <tr>
                 <td class="title">Release Date</td>
-                <td class="value">{{ movieData.publishDate }}</td>
+                <td class="value">{{ movieData.publishDate.slice(0,10) }}</td>
             </tr>
             <tr>
                 <td class="title">Director</td>

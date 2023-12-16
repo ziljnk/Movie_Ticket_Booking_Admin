@@ -18,6 +18,9 @@
     height: 100%;
 }
 
+table td {
+    padding-right: 20px;
+}
 .value {
     font-weight: normal;
     font-size: 10px;
